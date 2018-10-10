@@ -28,7 +28,7 @@ public struct CallOutCellMode {
 }
 
 public class TRPCallOutController {
-    
+    let transformY: CGFloat = 140
     let parentView: UIView;
     var cell: TRPCallOutCell?;
     public var isOpen = false
@@ -48,7 +48,7 @@ public class TRPCallOutController {
         cell!.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 32).isActive = true
         cell!.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -32).isActive = true
         cell!.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -32).isActive = true
-        cell?.transform = CGAffineTransform(translationX: 0, y: 120)
+        cell?.transform = CGAffineTransform(translationX: 0, y: self.transformY)
         cell?.cellPressed = { id in
             self.cellPressed?(id)
         }
@@ -64,7 +64,7 @@ public class TRPCallOutController {
         hiddenAnimation()
     }
     private func showAnimation() {
-        cell?.transform = CGAffineTransform(translationX: 0, y: 120)
+        cell?.transform = CGAffineTransform(translationX: 0, y: transformY)
         UIView.animate(withDuration: 0.2, delay:0, options: .curveEaseOut, animations: {
             self.cell?.transform = CGAffineTransform.identity
         }) { (_) in
@@ -74,9 +74,9 @@ public class TRPCallOutController {
     
     private func hiddenAnimation() {
         UIView.animate(withDuration: 0.2, delay:0, options: .curveEaseIn, animations: {
-            self.cell?.transform = CGAffineTransform(translationX: 0, y: 120)
+            self.cell?.transform = CGAffineTransform(translationX: 0, y: self.transformY)
         }) { (_) in
-            self.cell?.transform = CGAffineTransform(translationX: 0, y: 120)
+            self.cell?.transform = CGAffineTransform(translationX: 0, y: self.transformY)
         }
     }
 }

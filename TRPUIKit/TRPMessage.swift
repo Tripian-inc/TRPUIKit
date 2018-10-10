@@ -88,7 +88,6 @@ public class TRPMessage {
         self.parentInView = inView
         self.height = height
         commonInit()
-        
     }
     
     private func commonInit() {
@@ -111,6 +110,7 @@ public class TRPMessage {
     public func show() {
         startAnimation()
         setAutoClose(autoClose)
+        print("SHOW -- SHOW -- SHOW")
     }
     
     private func calculateRect(postion: Position) -> CGRect {
@@ -157,11 +157,11 @@ public class TRPMessage {
             guard let strong = self else {return}
             strong.containerView.transform = CGAffineTransform(translationX: 0, y: -1 * strong.height)
             strong.containerView.alpha = 0.3
-        }) { [weak self] (_) in
-            guard let strong = self else {return}
-            strong.containerView.transform = CGAffineTransform(translationX: 0, y: -1 * strong.height)
-            strong.containerView.alpha = 0
-            strong.containerView.removeFromSuperview()
+        }) { (_) in
+           // guard let strong = self else {return}
+            self.containerView.transform = CGAffineTransform(translationX: 0, y: -1 * self.height)
+            self.containerView.alpha = 0
+            self.containerView.removeFromSuperview()
         }
     }
     
