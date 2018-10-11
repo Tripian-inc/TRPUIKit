@@ -28,7 +28,7 @@ public struct CallOutCellMode {
 }
 
 public class TRPCallOutController {
-    let transformY: CGFloat = 140
+    let transformY: CGFloat = 150
     let parentView: UIView;
     var cell: TRPCallOutCell?;
     public var isOpen = false
