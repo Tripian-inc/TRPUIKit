@@ -27,16 +27,16 @@ public class TRPAddPlaceFilterVC {
     }
     
     public func getVC() -> UIViewController {
-        let alertController = UIAlertController(title: title , message: message, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: title , message: message, preferredStyle: UIAlertController.Style.actionSheet)
         
-        let recommendataion = UIAlertAction(title: recommendataionText, style: UIAlertActionStyle.default) { (action) in
+        let recommendataion = UIAlertAction(title: recommendataionText, style: UIAlertAction.Style.default) { (action) in
             self.mHandler?(.recommendation)
         }
-        let nearBy = UIAlertAction(title: nearByText, style: UIAlertActionStyle.default) { (_) in
+        let nearBy = UIAlertAction(title: nearByText, style: UIAlertAction.Style.default) { (_) in
             self.mHandler?(.nearBy)
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (_) in}
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (_) in}
         
         if selectedButton == .nearBy {
             nearBy.setValue(true, forKey: "checked")

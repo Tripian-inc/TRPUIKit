@@ -94,7 +94,7 @@ public class TRPMessage {
         containerView = UIView(frame: calculateRect(postion: position))
         containerView.backgroundColor = messageType.color()
         parentView.addSubview(containerView)
-        parentView.bringSubview(toFront: containerView)
+        parentView.bringSubviewToFront(containerView)
         containerView.addSubview(textLabel)
         textLabel.text = contentText
         textLabel.translatesAutoresizingMaskIntoConstraints = false

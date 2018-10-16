@@ -13,7 +13,7 @@ public class TRPSearchAreaButton: UIButton {
     public var title:String?
     public var titleColor: UIColor = UIColor.black {
         didSet {
-            setTitleColor(titleColor, for: UIControlState.normal)
+            setTitleColor(titleColor, for: UIControl.State.normal)
         }
     }
     public var fontSize: CGFloat = 12 {
@@ -70,8 +70,8 @@ public class TRPSearchAreaButton: UIButton {
         layer.cornerRadius = cornerRadius
         alpha = 0
         transform = CGAffineTransform(scaleX: 0, y: 0)
-        setTitle(title ?? "", for: UIControlState.normal)
-        setTitleColor(titleColor, for: UIControlState.normal)
+        setTitle(title ?? "", for: UIControl.State.normal)
+        setTitleColor(titleColor, for: UIControl.State.normal)
         titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
         layer.shadowColor = shadowColor.cgColor
         layer.shadowRadius = shadowRadius
@@ -87,7 +87,7 @@ public class TRPSearchAreaButton: UIButton {
         isAnimating = true
         
         self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        animator = UIViewPropertyAnimator(duration: 0.1, curve: UIViewAnimationCurve.easeOut, animations: {
+        animator = UIViewPropertyAnimator(duration: 0.1, curve: UIView.AnimationCurve.easeOut, animations: {
             self.alpha = 1
             self.transform = CGAffineTransform.identity
         })
@@ -103,7 +103,7 @@ public class TRPSearchAreaButton: UIButton {
     public func hidden() {
         if isAnimating == true {return}
         isAnimating = true
-        animator = UIViewPropertyAnimator(duration: 0.1, curve: UIViewAnimationCurve.easeOut, animations: {
+        animator = UIViewPropertyAnimator(duration: 0.1, curve: UIView.AnimationCurve.easeOut, animations: {
             self.alpha = 0
             self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         })

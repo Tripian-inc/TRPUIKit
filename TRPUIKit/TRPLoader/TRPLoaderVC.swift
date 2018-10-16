@@ -12,7 +12,7 @@ public class TRPLoaderVC: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         self.view.frame = UIScreen.main.bounds
-        self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
+        self.view.autoresizingMask = [UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleWidth]
         self.view.backgroundColor = UIColor(red:0, green:0, blue:0, alpha:0.1)
         //self.view.addSubview(contentView)
     }
@@ -24,7 +24,7 @@ public class TRPLoaderVC: UIViewController {
     public func show() {
         let window: UIWindow = UIApplication.shared.keyWindow!
         window.addSubview(view)
-        window.bringSubview(toFront: view)
+        window.bringSubviewToFront(view)
         view.frame = window.bounds
         let widht: CGFloat = 100
         let height: CGFloat = 40

@@ -169,9 +169,9 @@ class TRPCallOutCell: UIView {
         priceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1 * padding.right).isActive = true
         priceLabel.topAnchor.constraint(equalTo: topAnchor, constant: padding.top).isActive = true
-        stackView.axis  = UILayoutConstraintAxis.vertical
-        stackView.distribution  = UIStackViewDistribution.fill
-        stackView.alignment = UIStackViewAlignment.leading
+        stackView.axis  = NSLayoutConstraint.Axis.vertical
+        stackView.distribution  = UIStackView.Distribution.fill
+        stackView.alignment = UIStackView.Alignment.leading
         stackView.spacing   = 6.0
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false

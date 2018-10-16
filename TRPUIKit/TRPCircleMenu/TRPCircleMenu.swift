@@ -8,7 +8,7 @@
 
 import Foundation
 open class TRPCircleMenu: UIButton {
-    public enum State {
+    public enum CurrentState {
         case open, close
     }
     public enum Position {
@@ -26,7 +26,8 @@ open class TRPCircleMenu: UIButton {
     private var containerView: UIView?
     private var subButtonsPosition: Position = .left
     public var subButtonSpace: CGFloat = 25
-    private var currentStatus: State = .close {
+    
+    private var currentStatus: CurrentState = .close {
         didSet {
             delegate?.circleMenu(self, changedState: currentStatus)
         }
@@ -56,7 +57,7 @@ open class TRPCircleMenu: UIButton {
     }
     
     private func commonInit() {
-        addTarget(self, action: #selector(self.onPressed), for: UIControlEvents.touchDown)
+        addTarget(self, action: #selector(self.onPressed), for: UIControl.Event.touchDown)
         layer.cornerRadius = frame.width / 2
         layer.cornerRadius = frame.width / 2
         layer.masksToBounds = false
@@ -140,21 +141,21 @@ extension TRPCircleMenu {
         rotationAnim.duration = TimeInterval(duration)
         rotationAnim.toValue = (toAngle.degrees)
         rotationAnim.fromValue = (fromAngle.degrees)
-        rotationAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        rotationAnim.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         let fadeAnim = CABasicAnimation(keyPath: "opacity")
         fadeAnim.duration = TimeInterval(duration)
         fadeAnim.fromValue = fromOpacity
         fadeAnim.toValue = toOpacity
-        fadeAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        fadeAnim.fillMode = kCAFillModeForwards
+        fadeAnim.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        fadeAnim.fillMode = CAMediaTimingFillMode.forwards
         fadeAnim.isRemovedOnCompletion = false
         
         let scaleAnim = CABasicAnimation(keyPath: "transform.scale")
         scaleAnim.duration = TimeInterval(duration)
         scaleAnim.toValue = toScale
         scaleAnim.fromValue = fromScale
-        scaleAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        scaleAnim.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         view.layer.add(rotationAnim, forKey: nil)
         view.layer.add(fadeAnim, forKey: nil)
         view.layer.add(scaleAnim, forKey: nil)
@@ -220,7 +221,7 @@ extension TRPCircleMenu {
                                          titleName: buttons[i].name)
                 btn.alpha = 0
                 btn.tag = i
-                btn.addTarget(self, action: #selector(subButtonPressed(_:)), for: UIControlEvents.touchDown)
+                btn.addTarget(self, action: #selector(subButtonPressed(_:)), for: UIControl.Event.touchDown)
                 containerView.addSubview(btn)
                 createdSubButtons.append(btn)
             }

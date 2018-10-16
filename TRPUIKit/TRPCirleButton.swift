@@ -93,7 +93,7 @@ public class TRPCirleButton: UIButton {
         layer.shadowOffset = CGSize(width: -1, height: 1)
         layer.shadowRadius = 1
         
-        addTarget(self, action: #selector(onPressed), for: UIControlEvents.touchUpInside)
+        addTarget(self, action: #selector(onPressed), for: UIControl.Event.touchUpInside)
     }
     
     @objc func onPressed() {

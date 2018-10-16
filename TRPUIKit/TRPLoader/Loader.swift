@@ -76,7 +76,7 @@ class Loader : UIView{
         animation.toValue = toValue
         animation.fromValue = fromValue
         animation.duration = duration
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         animation.autoreverses = true
         animation.repeatCount = .greatestFiniteMagnitude
         if let time = delay {
