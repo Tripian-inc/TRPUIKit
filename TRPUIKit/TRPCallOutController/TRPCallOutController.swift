@@ -7,20 +7,19 @@
 //
 
 import UIKit
+
 public struct CallOutCellMode {
     var id:Int
     var name: String
     var poiCategory:String
-    var imageLink: String
     var startCount: Float
     var reviewCount: Int
     var price: Int
     
-    public init(id: Int, name: String, poiCategory: String, imageLink: String, startCount: Float, reviewCount: Int, price: Int) {
+    public init(id: Int, name: String, poiCategory: String, startCount: Float, reviewCount: Int, price: Int) {
         self.id = id
         self.name = name
         self.poiCategory = poiCategory
-        self.imageLink = imageLink
         self.startCount = startCount
         self.reviewCount = reviewCount
         self.price = price
@@ -43,6 +42,7 @@ public class TRPCallOutController {
     
     private func commonInit() {
         cell = TRPCallOutCell()
+        cell?.getImageView().image = nil
         parentView.addSubview(cell!)
         cell!.translatesAutoresizingMaskIntoConstraints = false
         cell!.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 32).isActive = true
@@ -59,8 +59,13 @@ public class TRPCallOutController {
         cell?.updateModel(model)
     }
     
+    public func getCellImageView() -> UIImageView? {
+        return cell?.getImageView()
+    }
+    
     public func hidden() {
         if cell == nil {return}
+        cell?.getImageView().image = nil
         hiddenAnimation()
     }
     private func showAnimation() {
@@ -79,16 +84,20 @@ public class TRPCallOutController {
             self.cell?.transform = CGAffineTransform(translationX: 0, y: self.transformY)
         }
     }
+    
+    
 }
 
 
 
 class TRPCallOutCell: UIView {
     
-    private let imageView: UIView = {
+    private let imageView: UIImageView = {
         let img = UIImageView()
         img.backgroundColor = TRPColor.darkGrey
         img.layer.cornerRadius = 64 / 2
+        img.clipsToBounds = true
+        img.contentMode = UIView.ContentMode.scaleAspectFill
         img.translatesAutoresizingMaskIntoConstraints = false
         return img
     }()
@@ -184,6 +193,10 @@ class TRPCallOutCell: UIView {
         star.show()
         let tap = UITapGestureRecognizer(target: self, action: #selector(pressed))
         addGestureRecognizer(tap)
+    }
+    
+    public func getImageView() -> UIImageView {
+        return imageView
     }
     
     @objc func pressed() -> Void {

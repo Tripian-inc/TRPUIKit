@@ -53,6 +53,7 @@ public class TRPMessage {
     private var autoCloseTime: TimeInterval = 0
     private var parentInView: UIView?
     private var height: CGFloat = 50;
+    private var startY: CGFloat = 0
     public var onPressed: ((_ view: TRPMessage) -> Void)?
     
     public init(contentText:String,
@@ -78,6 +79,7 @@ public class TRPMessage {
          autoClose: Bool = true,
          closeTime: TimeInterval = 2,
          height: CGFloat = 50.0,
+         startY: CGFloat = 0,
          inView: UIView) {
         
         self.contentText = contentText
@@ -87,6 +89,7 @@ public class TRPMessage {
         self.autoCloseTime = closeTime
         self.parentInView = inView
         self.height = height
+        self.startY = startY
         commonInit()
     }
     
@@ -118,7 +121,8 @@ public class TRPMessage {
         var startY: CGFloat = 0
         
         if position == .top {
-            startY = frame.origin.y
+            
+            startY = frame.origin.y + self.startY
         }else if position == .bottom{
             startY = frame.height - height
         }
