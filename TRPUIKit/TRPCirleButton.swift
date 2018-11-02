@@ -70,12 +70,6 @@ public class TRPCirleButton: UIButton {
             titleLbl.text = titleName
         }
         
-        //        imgView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        //        imgView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        //        imgView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        //        imgView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        //        imgView.image = normalImage
-        
         setImage(normalImage, for: .normal)
         if let selected = selectedImage {
             setImage(selected, for: .selected)

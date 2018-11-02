@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 open class TRPCircleMenu: UIButton {
     public enum CurrentState {
         case open, close
@@ -65,12 +66,13 @@ open class TRPCircleMenu: UIButton {
         layer.shadowOpacity = 0.5
         layer.shadowOffset = CGSize(width: -1, height: 1)
         layer.shadowRadius = 1
-        if let icon = normalIcon, let image = UIImage(named: icon) {
+        
+        if let icon = normalIcon, let image = UIImage(named: icon, in: Bundle.main, compatibleWith: nil) {
             normalImageView = UIImageView(image: image)
             addSubview(normalImageView!)
             setCenter(imageView: normalImageView!)
         }
-        if let icon = selectedIcon, let image = UIImage(named: icon) {
+        if let icon = selectedIcon, let image = UIImage(named: icon, in: Bundle.main, compatibleWith: nil) {
             selectedImageView = UIImageView(image: image)
             addSubview(selectedImageView!)
             selectedImageView?.alpha = 0
