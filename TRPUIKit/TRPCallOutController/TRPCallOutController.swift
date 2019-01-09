@@ -7,33 +7,57 @@
 //
 
 import UIKit
-
+public enum AddRemoveNavButtonStatus{
+    case none, add, remove, navigation, alternative,inRoute
+    
+    public func imageName() -> String? {
+        switch self {
+        case .none:
+            return nil
+        case .add:
+            return "add_btn"
+        case .remove:
+            return "remove_btn"
+        case .navigation:
+            return "navigation_addplace_btn_x"
+        case .alternative:
+            return "alternative_poi_icon"
+        case .inRoute:
+            return "inroute_btn"
+        }
+    }
+}
 public struct CallOutCellMode {
+    
     var id:Int
     var name: String
     var poiCategory:String
     var startCount: Float
     var reviewCount: Int
     var price: Int
+    var rightButtonStatus: AddRemoveNavButtonStatus?
     
-    public init(id: Int, name: String, poiCategory: String, startCount: Float, reviewCount: Int, price: Int) {
+    public init(id: Int, name: String, poiCategory: String, startCount: Float, reviewCount: Int, price: Int, rightButton: AddRemoveNavButtonStatus? = nil) {
         self.id = id
         self.name = name
         self.poiCategory = poiCategory
         self.startCount = startCount
         self.reviewCount = reviewCount
         self.price = price
+        self.rightButtonStatus = rightButton
     }
+    
 }
 
 public class TRPCallOutController {
-    let transformY: CGFloat = 150
-    let parentView: UIView;
+    let transformY: CGFloat = 200
+    var parentView: UIView
     var cell: TRPCallOutCell?;
     public var isOpen = false
     public var isAnimating = false
-    public var cellPressed: ((_ id: Int)-> Void)? = nil
-    
+    public var cellPressed: ((_ id: Int,  _ inRoute: Bool)-> Void)? = nil
+    public var action: ((_ status:AddRemoveNavButtonStatus, _ id:Int) -> Void)? = nil
+    private var model: CallOutCellMode?
     
     public init(inView: UIView) {
         parentView = inView
@@ -42,19 +66,32 @@ public class TRPCallOutController {
     
     private func commonInit() {
         cell = TRPCallOutCell()
-        cell?.getImageView().image = nil
+        cell!.getImageView().image = nil
         parentView.addSubview(cell!)
         cell!.translatesAutoresizingMaskIntoConstraints = false
         cell!.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 32).isActive = true
         cell!.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -32).isActive = true
-        cell!.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -32).isActive = true
-        cell?.transform = CGAffineTransform(translationX: 0, y: self.transformY)
-        cell?.cellPressed = { id in
-            self.cellPressed?(id)
+        // DOTO
+        cell!.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -62).isActive = true
+        cell!.transform = CGAffineTransform(translationX: 0, y: self.transformY)
+        cell!.cellPressed = { [weak self] id in
+            guard let strongSelf = self else {return}
+            var inRoute = false
+            if let m = strongSelf.model?.rightButtonStatus {
+                if m == .remove {
+                    inRoute = true
+                }
+            }
+            strongSelf.cellPressed?(id,inRoute)
+        }
+        cell!.rightButtonAction = { [weak self] status, id in
+            guard let strongSelf = self else {return}
+            strongSelf.action?(status,id)
         }
     }
     
     public func show(model: CallOutCellMode){
+        self.model = model
         showAnimation()
         cell?.updateModel(model)
     }
@@ -68,6 +105,7 @@ public class TRPCallOutController {
         cell?.getImageView().image = nil
         hiddenAnimation()
     }
+    
     private func showAnimation() {
         cell?.transform = CGAffineTransform(translationX: 0, y: transformY)
         UIView.animate(withDuration: 0.2, delay:0, options: .curveEaseOut, animations: {
@@ -108,7 +146,7 @@ class TRPCallOutCell: UIView {
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "asdasda asdasda asdasda asdasda asdasda asdasda asdasda asdasda asdasda"
+        label.text = ""
         return label
     }()
     
@@ -131,9 +169,21 @@ class TRPCallOutCell: UIView {
         return label
     }()
     
+    private lazy var addRemoveNavigationButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: 26).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        button.addTarget(self, action: #selector(addRemoveNavigationButtonPressed), for: UIControl.Event.touchUpInside)
+        return button
+    }()
+    
+    
+    public var rightButtonStatus = AddRemoveNavButtonStatus.add
     private let padding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     private var model: CallOutCellMode?
     public var cellPressed: ((_ id: Int) -> Void)? = nil
+    public var rightButtonAction: ((_ status:AddRemoveNavButtonStatus, _ id:Int) -> Void)? = nil
     
     init() {
         super.init(frame: CGRect.zero)
@@ -148,16 +198,53 @@ class TRPCallOutCell: UIView {
     
     public func updateModel(_ model : CallOutCellMode){
         self.model = model
-        priceLabel.text = String(repeating: "$" , count: model.price)
         titleLabel.text = model.name
-        typeLabel.text = model.poiCategory
+        typeLabel.attributedText = explaineStringCreater(type: model.poiCategory, price: model.price)
+        
         if Int(model.startCount) < 1 {
             star.isHidden = true
+            stackView.removeArrangedSubview(star)
         }else {
             star.isHidden = false
+            stackView.addArrangedSubview(star)
             star.setRating(Int(model.startCount))
         }
         
+        if let right = model.rightButtonStatus {
+            rightButtonStatus = right
+            guard let image =  rightButtonStatus.imageName() else {return}
+            addRemoveNavigationButton.isHidden = false
+            addRemoveNavigationButton.isUserInteractionEnabled = true
+            addRemoveNavigationButton.setImage(UIImage(named:image), for: .normal)
+        }else {
+            addRemoveNavigationButton.isHidden = true
+            addRemoveNavigationButton.isUserInteractionEnabled = false
+        }
+    }
+    
+    private func explaineStringCreater(type: String, price: Int) -> NSMutableAttributedString {
+        var text = "\(type)"
+        if price > 0 {
+            text += " - \(String(repeating: "$" , count: 4))"
+        }
+        let normalAttributes  = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12),.foregroundColor: UIColor.lightGray]
+        let sentence = NSMutableAttributedString(string: text, attributes: normalAttributes)
+        if price > 0 {
+            let largeAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),.foregroundColor: UIColor.darkGray]
+            let smallAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8),.foregroundColor: UIColor.lightGray]
+            sentence.setAttributes(largeAttributes, range: NSRange(location: type.lengthOfBytes(using: String.Encoding.utf8) + 3, length: price))
+            sentence.setAttributes(smallAttributes, range: NSRange(location: type.lengthOfBytes(using: String.Encoding.utf8) + 3 + price, length: 4 - price))
+        }
+        return sentence
+    }
+    
+    private func priceString(price: Int) -> NSMutableAttributedString {
+        let boldPrice = String(repeating: "$" , count: 4)
+        let largeAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),.foregroundColor: UIColor.darkGray]
+        let smallAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 8),.foregroundColor: UIColor.lightGray]
+        let attributedSentence = NSMutableAttributedString(string: boldPrice, attributes: smallAttributes)
+        attributedSentence.setAttributes(largeAttributes, range: NSRange(location: 0, length: price))
+        return attributedSentence
     }
     
     private func commonInit() {
@@ -174,25 +261,28 @@ class TRPCallOutCell: UIView {
         imageView.heightAnchor.constraint(equalToConstant: 64).isActive = true
         imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding.left).isActive = true
-        addSubview(priceLabel)
-        priceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1 * padding.right).isActive = true
-        priceLabel.topAnchor.constraint(equalTo: topAnchor, constant: padding.top).isActive = true
+        
         stackView.axis  = NSLayoutConstraint.Axis.vertical
-        stackView.distribution  = UIStackView.Distribution.fill
+        stackView.distribution  = UIStackView.Distribution.fillEqually
         stackView.alignment = UIStackView.Alignment.leading
         stackView.spacing   = 6.0
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: priceLabel.leadingAnchor, constant: -16).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
         stackView.topAnchor.constraint(equalTo: topAnchor, constant: padding.top).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding.top).isActive = true
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(typeLabel)
         stackView.addArrangedSubview(star)
         star.show()
+        
+        addSubview(addRemoveNavigationButton)
+        addRemoveNavigationButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        addRemoveNavigationButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(pressed))
         addGestureRecognizer(tap)
+        
     }
     
     public func getImageView() -> UIImageView {
@@ -200,9 +290,15 @@ class TRPCallOutCell: UIView {
     }
     
     @objc func pressed() -> Void {
-        print("Pressed");
         if let id = model?.id {
             cellPressed?(id)
+        }
+    }
+    
+    
+    @objc func addRemoveNavigationButtonPressed() {
+        if let id = model?.id {
+            rightButtonAction?(rightButtonStatus, id)
         }
     }
     

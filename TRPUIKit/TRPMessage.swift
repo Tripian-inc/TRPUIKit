@@ -70,7 +70,24 @@ public class TRPMessage {
         self.autoCloseTime = closeTime
         self.height = height
         commonInit()
-        
+    }
+    
+    public init(contentText:String,
+                type: MessageType,
+                nagivationController: UINavigationController?,
+                autoClose: Bool = true,
+                closeTime: TimeInterval = 2,
+                height: CGFloat = 50.0,
+                inView: UIView) {
+        self.contentText = contentText
+        self.position = .top
+        self.messageType = type
+        self.autoClose = autoClose
+        self.autoCloseTime = closeTime
+        self.height = height
+        self.parentInView = inView
+        self.startY = UIApplication.shared.statusBarFrame.size.height + (nagivationController?.navigationBar.frame.height ?? 0.0)
+        commonInit()
     }
     
     public init(contentText:String,
@@ -96,8 +113,9 @@ public class TRPMessage {
     private func commonInit() {
         containerView = UIView(frame: calculateRect(postion: position))
         containerView.backgroundColor = messageType.color()
+        
         parentView.addSubview(containerView)
-        parentView.bringSubviewToFront(containerView)
+        //parentView.bringSubviewToFront(containerView)
         containerView.addSubview(textLabel)
         textLabel.text = contentText
         textLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -113,15 +131,12 @@ public class TRPMessage {
     public func show() {
         startAnimation()
         setAutoClose(autoClose)
-        print("SHOW -- SHOW -- SHOW")
     }
     
     private func calculateRect(postion: Position) -> CGRect {
         let frame = parentView.frame
         var startY: CGFloat = 0
-        
         if position == .top {
-            
             startY = frame.origin.y + self.startY
         }else if position == .bottom{
             startY = frame.height - height
@@ -135,7 +150,6 @@ public class TRPMessage {
     private func setAutoClose(_ status:Bool) {
         if status == false { return }
         Timer.scheduledTimer(withTimeInterval: autoCloseTime, repeats: false) { (_) in
-            
             self.closeView()
         }
     }

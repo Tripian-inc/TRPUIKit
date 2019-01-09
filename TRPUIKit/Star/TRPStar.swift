@@ -18,6 +18,7 @@ public class TRPStar: UIView {
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = UIColor.blue
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -40,7 +41,6 @@ public class TRPStar: UIView {
         let size = getSize()
         
         let posX = getShortEdge() + spacing
-        print("Size \(size) - Posx \(posX)")
         for i in 0...4 {
             let star = getStartLayer(false)
             shapes.append(star)

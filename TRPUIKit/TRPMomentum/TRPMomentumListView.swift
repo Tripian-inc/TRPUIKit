@@ -91,6 +91,7 @@ public class TRPMomentumListView: UIView {
 
 //Add Listview
 extension TRPMomentumListView {
+    
     fileprivate func addTableView(){
         tableView = MovementList(frame: CGRect(x: 0,
                                                y: tapDragableSpace,
@@ -98,6 +99,7 @@ extension TRPMomentumListView {
                                                height: self.frame.height - tapDragableSpace))
         self.addSubview(tableView!)
     }
+    
 }
 
 //Pan Animation
@@ -156,7 +158,6 @@ extension TRPMomentumListView {
             animation.continueAnimation(withTimingParameters: timingParameters, durationFactor: durationFactor)
             break
         case .changed:
-            //print("Changed")
             var fraction = -recognizer.translation(in: self).y / closedTransform.ty
             if isOpen { fraction *= -1 }
             if animation.isReversed { fraction *= -1 }

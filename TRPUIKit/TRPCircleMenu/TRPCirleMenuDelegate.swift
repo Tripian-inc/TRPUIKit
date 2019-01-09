@@ -7,7 +7,7 @@
 //
 
 import Foundation
-public protocol TRPCirleMenuDelegate {
+public protocol TRPCirleMenuDelegate: AnyObject {
     func circleMenu(_ circleMenu: TRPCircleMenu, onPress button: UIButton, atIndex: Int)
     
     func circleMenu(_ circleMenu: TRPCircleMenu, changedState state: TRPCircleMenu.CurrentState)

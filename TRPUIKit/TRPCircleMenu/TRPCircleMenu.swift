@@ -35,7 +35,7 @@ open class TRPCircleMenu: UIButton {
     }
     private var isAnimating = false
     private var cirleR: CGFloat = 40
-    public var delegate: TRPCirleMenuDelegate?
+    public weak var delegate: TRPCirleMenuDelegate?
     
     
     public init(frame: CGRect,
@@ -59,7 +59,6 @@ open class TRPCircleMenu: UIButton {
     
     private func commonInit() {
         addTarget(self, action: #selector(self.onPressed), for: UIControl.Event.touchDown)
-        layer.cornerRadius = frame.width / 2
         layer.cornerRadius = frame.width / 2
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor

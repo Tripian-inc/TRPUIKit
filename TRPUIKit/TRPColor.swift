@@ -17,8 +17,9 @@ public struct TRPColor {
     public static var errorMessageColor : UIColor = UIColor(red: 218.0/255, green: 35.0/255,  blue: 27.0/255,  alpha: 0.70)
     public static var infoMessageColor : UIColor = UIColor(red: 45.0/255,  green: 188.0/255, blue: 255.0/255, alpha: 0.90)
     
-    public static var orangeColor : UIColor = UIColor(red: 248.0/255,  green: 187.0/255, blue: 44.0/255, alpha: 0.90)
-    public static var yellowColor : UIColor = UIColor(red: 254.0/255,  green: 252.0/255, blue: 75.0/255, alpha: 0.90)
+    public static var orangeColor : UIColor = UIColor(red: 248.0/255,  green: 187.0/255, blue: 44.0/255, alpha: 1.0)
+    public static var yellowColor : UIColor = UIColor(red: 254.0/255,  green: 252.0/255, blue: 75.0/255, alpha: 1.0)
     
-    public static var lightBlueGrey : UIColor = UIColor(red: 239.0/255,  green: 239.0/255, blue: 244.0/255, alpha: 0.90)
+    public static var lightBlueGrey : UIColor = UIColor(red: 239.0/255,  green: 239.0/255, blue: 244.0/255, alpha: 1.0)
+    public static var Green : UIColor = UIColor(red: 73.0/255,  green: 176.0/255, blue: 87.0/255, alpha: 1.0)
 }
