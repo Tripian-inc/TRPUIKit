@@ -9,13 +9,6 @@
 import UIKit
 public class TRPCirleButton: UIButton {
     
-    //    private lazy var imgView : UIImageView = {
-    //        let img = UIImageView()
-    //        img.translatesAutoresizingMaskIntoConstraints = false
-    //        img.contentMode = .center
-    //        return img
-    //    }()
-    
     public var textFontSize: CGFloat = 10 {
         didSet {
             titleLbl.font = UIFont.systemFont(ofSize: textFontSize)

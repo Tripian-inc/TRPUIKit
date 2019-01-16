@@ -21,7 +21,7 @@ public class TRPMapTopBar: UIView {
     lazy private var backButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(UIImage(named: "right-arrow_small"), for: .normal)
+        //btn.setImage(UIImage(named: "right-arrow_small"), for: .normal)
         btn.addTarget(self, action: #selector(backPressed), for: .touchUpInside)
         return btn
     }()
@@ -29,7 +29,7 @@ public class TRPMapTopBar: UIView {
     lazy private var dailyButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("Change: Day 1 ", for: .normal)
+        btn.setTitle("Day 1 ", for: .normal)
         btn.setTitleColor(TRPColor.darkGrey, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         //btn.contentHorizontalAlignment = .left
@@ -40,7 +40,7 @@ public class TRPMapTopBar: UIView {
     lazy private var searchButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(UIImage(named: "search_icon_pink"), for: .normal)
+        
         btn.addTarget(self, action: #selector(searchPressed), for: .touchUpInside)
         return btn
     }()
@@ -61,14 +61,25 @@ public class TRPMapTopBar: UIView {
     
     public weak var delegate: TRPMapTopBarDelegate?
     
-    override public init(frame: CGRect) {
+    override public init(frame: CGRect ) {
         super.init(frame: frame)
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public func setSearchIcon(_ image: UIImage) {
+        //UIImage(named: "search_icon_pink")
+        searchButton.setImage(image, for: .normal)
+    }
+    
+    public func setBackIcon(_ image: UIImage) {
+        //UIImage(named: "right-arrow_small")
+        backButton.setImage(image, for: .normal)
+    }
     
     public func commonInit() {
         translatesAutoresizingMaskIntoConstraints = false
@@ -141,4 +152,5 @@ public class TRPMapTopBar: UIView {
     deinit {
         print("TRMapTopBar deinit")
     }
+    
 }

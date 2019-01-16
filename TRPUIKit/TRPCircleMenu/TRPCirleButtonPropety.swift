@@ -8,11 +8,12 @@
 
 import Foundation
 public struct TRPCirleButtonPropety {
-    public var name:String
     
-    public var iconName: String
-    public init(name: String, iconName: String) {
+    public var name:String
+    public var image: UIImage?
+    
+    public init(name: String, image: UIImage?) {
         self.name = name
-        self.iconName = iconName
+        self.image = image
     }
 }

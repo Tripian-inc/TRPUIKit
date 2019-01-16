@@ -15,13 +15,13 @@ public class TRPMessage {
         func color() -> UIColor {
             switch self {
             case .info:
-                return TRPColor.infoMessageColor
+                return TRPColor.infoMessage
             case .error:
-                return TRPColor.errorMessageColor
+                return TRPColor.errorMessage
             case .warning:
-                return TRPColor.warningMessageColor
+                return TRPColor.warningMessage
             case .success:
-                return TRPColor.successMessageColor
+                return TRPColor.successMessage
             }
         }
     }

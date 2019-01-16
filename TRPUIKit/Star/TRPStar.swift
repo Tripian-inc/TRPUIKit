@@ -11,8 +11,8 @@ public class TRPStar: UIView {
     
     var spacing: CGFloat = 4
     var lineWidth: CGFloat = 10
-    var fillColor = TRPColor.orangeColor
-    var lineColor = TRPColor.orangeColor
+    var fillColor = TRPColor.orange
+    var lineColor = TRPColor.orange
     var shapes: [CAShapeLayer] = []
     var isLoaded = false
     

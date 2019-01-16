@@ -19,8 +19,8 @@ open class TRPCircleMenu: UIButton {
     fileprivate var animator = UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.6)//UIViewPropertyAnimator(duration: 0.1, curve: .easeOut)
     private var subButtons: [TRPCirleButtonPropety] = []
     private var createdSubButtons: [TRPCirleButton] = []
-    private var normalIcon: String?
-    private var selectedIcon: String?
+    private var normalIcon: UIImage?
+    private var selectedIcon: UIImage?
     private var normalImageView: UIImageView?
     private var selectedImageView: UIImageView?
     private var isNormal: Bool = true
@@ -39,8 +39,8 @@ open class TRPCircleMenu: UIButton {
     
     
     public init(frame: CGRect,
-                normalIcon: String?,
-                selectedIcon: String?,
+                normalIcon: UIImage?,
+                selectedIcon: UIImage?,
                 subButtons: [TRPCirleButtonPropety]?,
                 position: Position = .left) {
         super.init(frame: frame)
@@ -66,12 +66,12 @@ open class TRPCircleMenu: UIButton {
         layer.shadowOffset = CGSize(width: -1, height: 1)
         layer.shadowRadius = 1
         
-        if let icon = normalIcon, let image = UIImage(named: icon, in: Bundle.main, compatibleWith: nil) {
+        if let image = normalIcon {
             normalImageView = UIImageView(image: image)
             addSubview(normalImageView!)
             setCenter(imageView: normalImageView!)
         }
-        if let icon = selectedIcon, let image = UIImage(named: icon, in: Bundle.main, compatibleWith: nil) {
+        if let image = selectedIcon {
             selectedImageView = UIImageView(image: image)
             addSubview(selectedImageView!)
             selectedImageView?.alpha = 0
@@ -216,7 +216,7 @@ extension TRPCircleMenu {
             //let startX: CGFloat = (containerView.frame.width - cirleR - subButtonSpace) - ((cirleR + subButtonSpace) * CGFloat(i))
             let startX: CGFloat = self.containerView!.frame.width - 40 - subButtonSpace
             let startY: CGFloat = (containerView.frame.height - cirleR) / 2
-            if let image = UIImage(named: buttons[i].iconName) {
+            if let image = buttons[i].image {
                 let btn = TRPCirleButton(frame: CGRect(x: startX, y:startY, width: cirleR, height: cirleR),
                                          normalImage:image,
                                          titleName: buttons[i].name)
