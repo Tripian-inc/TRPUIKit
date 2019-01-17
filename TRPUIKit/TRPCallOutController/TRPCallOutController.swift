@@ -37,7 +37,13 @@ public struct CallOutCellMode {
     var price: Int
     var rightButtonStatus: AddRemoveNavButtonStatus?
     
-    public init(id: Int, name: String, poiCategory: String, startCount: Float, reviewCount: Int, price: Int, rightButton: AddRemoveNavButtonStatus? = nil) {
+    public init(id: Int,
+                name: String,
+                poiCategory: String,
+                startCount: Float,
+                reviewCount: Int,
+                price: Int,
+                rightButton: AddRemoveNavButtonStatus? = nil) {
         self.id = id
         self.name = name
         self.poiCategory = poiCategory
@@ -58,9 +64,19 @@ public class TRPCallOutController {
     public var cellPressed: ((_ id: Int,  _ inRoute: Bool)-> Void)? = nil
     public var action: ((_ status:AddRemoveNavButtonStatus, _ id:Int) -> Void)? = nil
     private var model: CallOutCellMode?
+    private var addBtnImage: UIImage?
+    private var removeBtnImage: UIImage?
+    private var navigationBtnImage: UIImage?
     
-    public init(inView: UIView) {
+    
+    public init(inView: UIView,
+                addBtnImage: UIImage?,
+                removeBtnImage: UIImage?,
+                navigationBtnImage: UIImage?) {
         parentView = inView
+        self.addBtnImage = addBtnImage
+        self.removeBtnImage = removeBtnImage
+        self.navigationBtnImage = navigationBtnImage
         commonInit()
     }
     
@@ -93,6 +109,21 @@ public class TRPCallOutController {
     public func show(model: CallOutCellMode){
         self.model = model
         showAnimation()
+        
+        var btnImage: UIImage?
+        if let status = model.rightButtonStatus {
+            switch  status{
+            case .add:
+                btnImage = addBtnImage
+            case .remove:
+                btnImage = removeBtnImage
+            case .navigation:
+                btnImage = navigationBtnImage
+            default:
+                ()
+            }
+        }
+        cell?.addRemoveNavigationButton.setImage(btnImage, for: .normal)
         cell?.updateModel(model)
     }
     
@@ -169,7 +200,7 @@ class TRPCallOutCell: UIView {
         return label
     }()
     
-    private lazy var addRemoveNavigationButton: UIButton = {
+    public lazy var addRemoveNavigationButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.widthAnchor.constraint(equalToConstant: 26).isActive = true
@@ -184,6 +215,9 @@ class TRPCallOutCell: UIView {
     private var model: CallOutCellMode?
     public var cellPressed: ((_ id: Int) -> Void)? = nil
     public var rightButtonAction: ((_ status:AddRemoveNavButtonStatus, _ id:Int) -> Void)? = nil
+    private var addBtnImage: UIImage?
+    private var removeBtnImage: UIImage?
+    private var navigationBtnImage: UIImage?
     
     init() {
         super.init(frame: CGRect.zero)
@@ -212,10 +246,11 @@ class TRPCallOutCell: UIView {
         
         if let right = model.rightButtonStatus {
             rightButtonStatus = right
-            guard let image =  rightButtonStatus.imageName() else {return}
+            
+            
             addRemoveNavigationButton.isHidden = false
             addRemoveNavigationButton.isUserInteractionEnabled = true
-            addRemoveNavigationButton.setImage(UIImage(named:image), for: .normal)
+            //addRemoveNavigationButton.setImage(UIImage(named:image), for: .normal)
         }else {
             addRemoveNavigationButton.isHidden = true
             addRemoveNavigationButton.isUserInteractionEnabled = false
