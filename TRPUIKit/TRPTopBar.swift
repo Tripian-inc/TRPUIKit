@@ -88,4 +88,11 @@ public class TRPTopBar: UIView {
         self.titleLabel?.text = title
     }
     
+    public func setTitleColor(_ color: UIColor) {
+        titleLabel?.textColor = color
+    }
+    
+    public func setBgColor(_ color: UIColor) {
+        backgroundColor = color
+    }
 }
