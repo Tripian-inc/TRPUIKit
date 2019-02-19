@@ -246,8 +246,6 @@ class TRPCallOutCell: UIView {
         
         if let right = model.rightButtonStatus {
             rightButtonStatus = right
-            
-            
             addRemoveNavigationButton.isHidden = false
             addRemoveNavigationButton.isUserInteractionEnabled = true
             //addRemoveNavigationButton.setImage(UIImage(named:image), for: .normal)

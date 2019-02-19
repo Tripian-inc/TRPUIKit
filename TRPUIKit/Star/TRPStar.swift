@@ -36,7 +36,7 @@ public class TRPStar: UIView {
     }
     
     public func show() {
-        backgroundColor = UIColor.red
+        
         if isLoaded == true {return}
         let size = getSize()
         
@@ -48,6 +48,7 @@ public class TRPStar: UIView {
             star.transform = CATransform3DMakeScale(size, size, 1.0)
             star.position.x = posX * CGFloat(i)
         }
+        frame = CGRect(x: 0, y: 0, width: posX * CGFloat(4) , height: 20)
         isLoaded = true
         layoutIfNeeded()
     }

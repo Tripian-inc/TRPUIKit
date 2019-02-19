@@ -39,15 +39,19 @@ public class TRPCirleButton: UIButton {
     var normalImage: UIImage?
     var selectedImage: UIImage?
     var titleName: String?
+    private var isAutoSelection: Bool = true
+    
     
     public init(frame:CGRect,
          normalImage: UIImage,
          selectedImage: UIImage? = nil,
-         titleName: String? = nil) {
+         titleName: String? = nil,
+         isAutoSelection: Bool = true) {
         super.init(frame: frame)
         self.normalImage = normalImage
         self.selectedImage = selectedImage
         self.titleName = titleName
+        self.isAutoSelection = isAutoSelection
         commonInit()
     }
     
@@ -84,6 +88,9 @@ public class TRPCirleButton: UIButton {
     }
     
     @objc func onPressed() {
-        isSelected = !isSelected
+        if isAutoSelection {
+            isSelected = !isSelected
+        }
     }
+    
 }
