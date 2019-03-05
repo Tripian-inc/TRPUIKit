@@ -67,16 +67,24 @@ public class TRPCallOutController {
     private var addBtnImage: UIImage?
     private var removeBtnImage: UIImage?
     private var navigationBtnImage: UIImage?
-    
+    public var bottomSpace: CGFloat {
+        didSet {
+            if cell != nil {
+                cell!.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -1 * bottomSpace).isActive = true
+            }
+        }
+    }
     
     public init(inView: UIView,
                 addBtnImage: UIImage?,
                 removeBtnImage: UIImage?,
-                navigationBtnImage: UIImage?) {
+                navigationBtnImage: UIImage?,
+                bottomSpace: CGFloat = 62) {
         parentView = inView
         self.addBtnImage = addBtnImage
         self.removeBtnImage = removeBtnImage
         self.navigationBtnImage = navigationBtnImage
+        self.bottomSpace = bottomSpace
         commonInit()
     }
     
@@ -88,7 +96,7 @@ public class TRPCallOutController {
         cell!.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 32).isActive = true
         cell!.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -32).isActive = true
         // DOTO
-        cell!.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -62).isActive = true
+        cell!.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -1 * bottomSpace).isActive = true
         cell!.transform = CGAffineTransform(translationX: 0, y: self.transformY)
         cell!.cellPressed = { [weak self] id in
             guard let strongSelf = self else {return}

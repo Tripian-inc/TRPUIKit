@@ -75,7 +75,9 @@ public class TRPTopBar: UIView {
         addSubview(titleLabel!)
         titleLabel?.translatesAutoresizingMaskIntoConstraints = false
         titleLabel?.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
-        titleLabel?.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        //titleLabel?.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        titleLabel?.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60).isActive = true
+        titleLabel?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60).isActive = true
         titleLabel?.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         titleLabel?.text = "My Trip"
         titleLabel?.font = UIFont.systemFont(ofSize: 18)

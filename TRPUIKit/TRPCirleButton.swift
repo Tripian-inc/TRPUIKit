@@ -33,6 +33,7 @@ public class TRPCirleButton: UIButton {
         lbl.font = UIFont.systemFont(ofSize: textFontSize)
         lbl.textColor = textColor
         lbl.sizeToFit()
+        lbl.adjustsFontSizeToFitWidth = true
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -73,8 +74,8 @@ public class TRPCirleButton: UIButton {
         }
         
         titleLbl.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        titleLbl.widthAnchor.constraint(equalTo: self.widthAnchor, constant: 20).isActive = true
-        titleLbl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -10).isActive = true
+        titleLbl.widthAnchor.constraint(equalTo: self.widthAnchor, constant: 22).isActive = true
+        titleLbl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -11).isActive = true
         titleLbl.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 6).isActive = true
         
         layer.cornerRadius = frame.width / 2
