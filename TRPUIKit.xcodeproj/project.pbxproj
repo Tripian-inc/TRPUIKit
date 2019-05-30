@@ -6,6 +6,21 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B22C8F852231786100D18633 /* UniversalTRPUIKit */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B22C8F882231786200D18633 /* Build configuration list for PBXAggregateTarget "UniversalTRPUIKit" */;
+			buildPhases = (
+				B22C8F892231786B00D18633 /* ShellScript */,
+			);
+			dependencies = (
+				B22C8F992231793500D18633 /* PBXTargetDependency */,
+			);
+			name = UniversalTRPUIKit;
+			productName = UniversalTRPUIKit;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		B2125FDB21CBDF440001CD53 /* TRPMapTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */; };
 		B2431325215ED3F0005DB0E6 /* TRPUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2431323215ED3F0005DB0E6 /* TRPUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,8 +44,17 @@
 		B2B4436F2161D18200371938 /* TRPCallOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B4436E2161D18200371938 /* TRPCallOutController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B22C8F982231793500D18633 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2431317215ED3EF005DB0E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B243131F215ED3F0005DB0E6;
+			remoteInfo = TRPUIKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		B20ECC6521898347003C7F15 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = ../TRPCoreKit/Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPMapTopBar.swift; sourceTree = "<group>"; };
 		B2431320215ED3F0005DB0E6 /* TRPUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TRPUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2431323215ED3F0005DB0E6 /* TRPUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRPUIKit.h; sourceTree = "<group>"; };
@@ -69,7 +93,6 @@
 		B20ECC6421898347003C7F15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B20ECC6521898347003C7F15 /* Kingfisher.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -197,9 +220,13 @@
 		B2431317215ED3EF005DB0E6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				DefaultBuildSystemTypeForWorkspace = Original;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Evren Yaşar";
 				TargetAttributes = {
+					B22C8F852231786100D18633 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					B243131F215ED3F0005DB0E6 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1000;
@@ -219,6 +246,7 @@
 			projectRoot = "";
 			targets = (
 				B243131F215ED3F0005DB0E6 /* TRPUIKit */,
+				B22C8F852231786100D18633 /* UniversalTRPUIKit */,
 			);
 		};
 /* End PBXProject section */
@@ -232,6 +260,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B22C8F892231786B00D18633 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B243131B215ED3F0005DB0E6 /* Sources */ = {
@@ -262,7 +310,33 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B22C8F992231793500D18633 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B243131F215ED3F0005DB0E6 /* TRPUIKit */;
+			targetProxy = B22C8F982231793500D18633 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		B22C8F862231786200D18633 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LKU8459YDL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B22C8F872231786200D18633 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LKU8459YDL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B2431326215ED3F0005DB0E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -439,6 +513,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B22C8F882231786200D18633 /* Build configuration list for PBXAggregateTarget "UniversalTRPUIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B22C8F862231786200D18633 /* Debug */,
+				B22C8F872231786200D18633 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B243131A215ED3EF005DB0E6 /* Build configuration list for PBXProject "TRPUIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

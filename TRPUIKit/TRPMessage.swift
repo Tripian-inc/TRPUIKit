@@ -11,7 +11,6 @@ public class TRPMessage {
     
     public enum MessageType {
         case success, error, warning, info
-        
         func color() -> UIColor {
             switch self {
             case .info:
@@ -52,8 +51,9 @@ public class TRPMessage {
     private var contentText: String
     private var autoCloseTime: TimeInterval = 0
     private var parentInView: UIView?
-    private var height: CGFloat = 50;
+    private var height: CGFloat = 50
     private var startY: CGFloat = 0
+    private var topForIphoneX = false
     public var onPressed: ((_ view: TRPMessage) -> Void)?
     
     public init(contentText:String,
@@ -61,14 +61,15 @@ public class TRPMessage {
          position: Position = .top,
          autoClose: Bool = true,
          closeTime: TimeInterval = 2,
-         height: CGFloat = 50.0) {
-        
+         height: CGFloat = 50.0,
+         topForIphoneX: Bool = false) {
+        self.topForIphoneX = topForIphoneX
         self.contentText = contentText
         self.position = position
         self.messageType = type
         self.autoClose = autoClose
         self.autoCloseTime = closeTime
-        self.height = height
+        self.height = calculateHeight(height)
         commonInit()
     }
     
@@ -78,13 +79,15 @@ public class TRPMessage {
                 autoClose: Bool = true,
                 closeTime: TimeInterval = 2,
                 height: CGFloat = 50.0,
-                inView: UIView) {
+                inView: UIView,
+                topForIphoneX: Bool = false) {
+        self.topForIphoneX = topForIphoneX
         self.contentText = contentText
         self.position = .top
         self.messageType = type
         self.autoClose = autoClose
         self.autoCloseTime = closeTime
-        self.height = height
+        self.height = calculateHeight(height)
         self.parentInView = inView
         self.startY = UIApplication.shared.statusBarFrame.size.height + (nagivationController?.navigationBar.frame.height ?? 0.0)
         commonInit()
@@ -97,17 +100,33 @@ public class TRPMessage {
          closeTime: TimeInterval = 2,
          height: CGFloat = 50.0,
          startY: CGFloat = 0,
-         inView: UIView) {
-        
+         inView: UIView,
+         topForIphoneX: Bool = false) {
+        self.topForIphoneX = topForIphoneX
         self.contentText = contentText
         self.position = position
         self.messageType = type
         self.autoClose = autoClose
         self.autoCloseTime = closeTime
         self.parentInView = inView
-        self.height = height
+        self.height = calculateHeight(height)
         self.startY = startY
         commonInit()
+    }
+    
+    private func calculateHeight(_ heigt: CGFloat) -> CGFloat {
+        if topForIphoneX && hasTopNotch {
+            return heigt + 24
+        }
+        return heigt
+    }
+    
+    var hasTopNotch: Bool {
+        if #available(iOS 11.0,  *) {
+            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
+        }
+        
+        return false
     }
     
     private func commonInit() {
@@ -141,9 +160,7 @@ public class TRPMessage {
         }else if position == .bottom{
             startY = frame.height - height
         }
-        
         let rect = CGRect(x: 0, y: startY, width: frame.width, height: height)
-        
         return rect
     }
     

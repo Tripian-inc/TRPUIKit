@@ -40,7 +40,7 @@ public class TRPMapTopBar: UIView {
     lazy private var searchButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        //btn.addTarget(self, action: #selector(searchPressed), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(searchPressed), for: .touchUpInside)
         return btn
     }()
     
@@ -108,12 +108,6 @@ public class TRPMapTopBar: UIView {
         dailyButton.leadingAnchor.constraint(equalTo: self.backButton.trailingAnchor, constant: 8).isActive = true
         dailyButton.trailingAnchor.constraint(equalTo: self.searchButton.leadingAnchor, constant: -8).isActive = true
         
-        /*addSubview(lineView)
-        lineView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6).isActive = true
-        lineView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6).isActive = true
-        lineView.widthAnchor.constraint(equalToConstant: 1).isActive = true
-        lineView.trailingAnchor.constraint(equalTo: self.searchButton.leadingAnchor, constant: 1).isActive = true */
-        
         addSubview(lineView2)
         lineView2.topAnchor.constraint(equalTo: self.topAnchor, constant: 6).isActive = true
         lineView2.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6).isActive = true
@@ -121,11 +115,11 @@ public class TRPMapTopBar: UIView {
         lineView2.leadingAnchor.constraint(equalTo: self.backButton.trailingAnchor, constant: -4).isActive = true
     }
     
-    public func setDailyText(dayNum: Int, buttonText: String?) {
+    public func setDailyText(dayNum: Int? = nil, buttonText: String? = nil) {
         var text = ""
         if let t = buttonText {
             text = t
-        }else {
+        }else if let dayNum = dayNum{
             text = "Day \(dayNum)"
         }
         dailyButton.setTitle(text, for: UIControl.State.normal)

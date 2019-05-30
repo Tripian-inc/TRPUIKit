@@ -1,0 +1,23 @@
+version: "Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
+options: "524479bca9cdff59b54dbd4a91d8c9ca"
+build_time: [1559113547, 812207000]
+inputs:
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPCirleButton.swift": [1551253247, 256025434]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPSearchAreaButton.swift": [1556546279, 130831648]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/Star/TRPStar.swift": [1550485606, 885280014]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPLoader/TRPLoaderView.swift": [1538171192, 0]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPMomentum/MovementList.swift": [1538170079, 0]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPCircleMenu/TRPCirleMenuDelegate.swift": [1543315419, 6822262]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPColor.swift": [1556615896, 306617369]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPCircleMenu/TRPCirleButtonPropety.swift": [1547204220, 952641709]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPTopBar.swift": [1551252978, 760250388]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPCircleMenu/TRPCircleMenu.swift": [1547204231, 589775503]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPMapTopBar.swift": [1558704415, 2811091]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPAddPlaceFilterVC.swift": [1539672267, 486641690]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPLoader/Loader.swift": [1539672267, 431042531]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPGradientView.swift": [1538171218, 0]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPCallOutController/TRPCallOutController.swift": [1552377672, 523055514]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPMomentum/TRPMomentumListView.swift": [1543685126, 894257740]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPUIKit.swift": [1538204820, 0]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPMessage.swift": [1552388643, 146684246]
+  "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPLoader/TRPLoaderVC.swift": [1539672267, 464547818]

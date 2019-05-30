@@ -1,0 +1,10 @@
+framework module TRPUIKit {
+  umbrella header "TRPUIKit.h"
+
+  export *
+  module * { export * }
+}
+
+module TRPUIKit.__Swift {
+    exclude header "TRPUIKit-Swift.h"
+}

@@ -1,0 +1,110 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "TRPCirleMenuDelegate"
+provides-nominal:
+- "8TRPUIKit20TRPCirleMenuDelegateP"
+provides-member:
+- ["8TRPUIKit20TRPCirleMenuDelegateP", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AnyObject"
+- "Int"
+- "TRPCircleMenu"
+- "TRPCirleMenuDelegate"
+- "UIButton"
+depends-member:
+- ["So15CALayerDelegateP", "CurrentState"]
+- ["s7CVarArgP", "CurrentState"]
+- ["s28CustomDebugStringConvertibleP", "CurrentState"]
+- ["s23CustomStringConvertibleP", "CurrentState"]
+- ["SQ", "CurrentState"]
+- ["SH", "CurrentState"]
+- ["So8NSCodingP", "CurrentState"]
+- ["So8NSObjectC", "CurrentState"]
+- ["So8NSObjectP", "CurrentState"]
+- ["8TRPUIKit13TRPCircleMenuC", "CurrentState"]
+- ["8TRPUIKit20TRPCirleMenuDelegateP", "Int"]
+- ["8TRPUIKit20TRPCirleMenuDelegateP", "TRPCircleMenu"]
+- ["8TRPUIKit20TRPCirleMenuDelegateP", "UIButton"]
+- ["8TRPUIKit20TRPCirleMenuDelegateP", "circleMenu"]
+- ["So48UIAccessibilityContentSizeCategoryImageAdjustingP", "CurrentState"]
+- ["So29UIAccessibilityIdentificationP", "CurrentState"]
+- ["So12UIAppearanceP", "CurrentState"]
+- ["So21UIAppearanceContainerP", "CurrentState"]
+- ["So8UIButtonC", "CurrentState"]
+- ["So9UIControlC", "CurrentState"]
+- ["So17UICoordinateSpaceP", "CurrentState"]
+- ["So13UIDynamicItemP", "CurrentState"]
+- ["So18UIFocusEnvironmentP", "CurrentState"]
+- ["So11UIFocusItemP", "CurrentState"]
+- ["So20UIFocusItemContainerP", "CurrentState"]
+- ["So30UIPasteConfigurationSupportingP", "CurrentState"]
+- ["So11UIResponderC", "CurrentState"]
+- ["So30UIResponderStandardEditActionsP", "CurrentState"]
+- ["So35UISpringLoadedInteractionSupportingP", "CurrentState"]
+- ["So18UITraitEnvironmentP", "CurrentState"]
+- ["So23UIUserActivityRestoringP", "CurrentState"]
+- ["So6UIViewC", "CurrentState"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "CurrentState"]
+- ["s38__DefaultCustomPlaygroundQuickLookableP", "CurrentState"]
+depends-nominal:
+- "So15CALayerDelegateP"
+- "s7CVarArgP"
+- "s28CustomDebugStringConvertibleP"
+- "s23CustomStringConvertibleP"
+- "SQ"
+- "SH"
+- "So8NSCodingP"
+- "So8NSObjectC"
+- "So8NSObjectP"
+- "8TRPUIKit13TRPCircleMenuC"
+- "8TRPUIKit20TRPCirleMenuDelegateP"
+- "So48UIAccessibilityContentSizeCategoryImageAdjustingP"
+- "So29UIAccessibilityIdentificationP"
+- "So12UIAppearanceP"
+- "So21UIAppearanceContainerP"
+- "So8UIButtonC"
+- "So9UIControlC"
+- "So17UICoordinateSpaceP"
+- "So13UIDynamicItemP"
+- "So18UIFocusEnvironmentP"
+- "So11UIFocusItemP"
+- "So20UIFocusItemContainerP"
+- "So30UIPasteConfigurationSupportingP"
+- "So11UIResponderC"
+- "So30UIResponderStandardEditActionsP"
+- "So35UISpringLoadedInteractionSupportingP"
+- "So18UITraitEnvironmentP"
+- "So23UIUserActivityRestoringP"
+- "So6UIViewC"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "s38__DefaultCustomPlaygroundQuickLookableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
+- "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPUIKit.h"
+- "/Users/evrenyasar/Xcode/TRPUIKit/build/TRPUIKit.build/Debug-iphoneos/TRPUIKit.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "4621ecd15636df247ef783f49f34a5e1"
