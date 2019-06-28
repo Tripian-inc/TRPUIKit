@@ -3,11 +3,11 @@
   'case-sensitive': 'false',
   'roots': [{
     'type': 'directory',
-    'name': '/Users/evrenyasar/Library/Developer/Xcode/DerivedData/TRPTestApp-gvhwooczxgmxxfguawbihchrehlg/Build/Products/Debug-iphonesimulator/TRPUIKit.framework/Modules'
+    'name': '/Users/rozeridilar/Library/Developer/Xcode/DerivedData/TripianDevApp-faovwsydknhegqflylboxujnuckb/Build/Products/Debug-iphonesimulator/TRPUIKit.framework/Modules'
     'contents': [{
       'type': 'file',
       'name': 'module.modulemap',
-      'external-contents': '/Users/evrenyasar/Xcode/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/unextended-module.modulemap',
+      'external-contents': '/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/unextended-module.modulemap',
     }]
   }]
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 public enum AddRemoveNavButtonStatus{
-    case none, add, remove, navigation, alternative,inRoute
+    case none, add, remove, navigation, alternative, inRoute
     
     public func imageName() -> String? {
         switch self {
@@ -23,7 +23,7 @@ public enum AddRemoveNavButtonStatus{
         case .alternative:
             return "alternative_poi_icon"
         case .inRoute:
-            return "inroute_btn"
+            return "route_btn"
         }
     }
 }
@@ -161,11 +161,7 @@ public class TRPCallOutController {
             self.cell?.transform = CGAffineTransform(translationX: 0, y: self.transformY)
         }
     }
-    
-    
 }
-
-
 
 class TRPCallOutCell: UIView {
     

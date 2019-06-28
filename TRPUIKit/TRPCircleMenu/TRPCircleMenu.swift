@@ -26,7 +26,8 @@ open class TRPCircleMenu: UIButton {
     private var isNormal: Bool = true
     private var containerView: UIView?
     private var subButtonsPosition: Position = .left
-    public var subButtonSpace: CGFloat = 25
+    public var subButtonSpace: CGFloat = 35
+    private var circleR: CGFloat = 50
     
     private var currentStatus: CurrentState = .close {
         didSet {
@@ -34,7 +35,6 @@ open class TRPCircleMenu: UIButton {
         }
     }
     private var isAnimating = false
-    private var cirleR: CGFloat = 40
     public weak var delegate: TRPCirleMenuDelegate?
     
     
@@ -171,7 +171,12 @@ extension TRPCircleMenu {
         superview?.insertSubview(containerView!, belowSubview: self)
         containerView!.translatesAutoresizingMaskIntoConstraints = false
         
-        var width: CGFloat = 200
+        var width: CGFloat = 240
+        if UIScreen.main.bounds.width < 325.0{//Iphone 5 ve diger kucukleri icin
+            width = 200
+            subButtonSpace = 17
+            circleR = 40
+        }
         var height: CGFloat = 100
         
         switch subButtonsPosition {
@@ -200,7 +205,7 @@ extension TRPCircleMenu {
             containerView!.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
             break
         }
-        containerView!.widthAnchor.constraint(equalToConstant: width).isActive = true
+        containerView!.widthAnchor.constraint(equalToConstant: width + 40).isActive = true
         containerView!.heightAnchor.constraint(equalToConstant: height).isActive = true
     }
     
@@ -211,13 +216,17 @@ extension TRPCircleMenu {
     
     fileprivate func createSubButtons(_ buttons: [TRPCirleButtonPropety]) {
         guard let containerView = containerView else {return}
-        
+        if UIScreen.main.bounds.width < 325.0{//Iphone 5 ve digerleri
+            subButtonSpace = 17
+            circleR = 40
+        }
         for i in 0..<buttons.count {
             //let startX: CGFloat = (containerView.frame.width - cirleR - subButtonSpace) - ((cirleR + subButtonSpace) * CGFloat(i))
-            let startX: CGFloat = self.containerView!.frame.width - 40 - subButtonSpace
-            let startY: CGFloat = (containerView.frame.height - cirleR) / 2
+            let dist = subButtonSpace == 17 ? subButtonSpace : subButtonSpace + 30
+            let startX: CGFloat = self.containerView!.frame.width - dist
+            let startY: CGFloat = (containerView.frame.height - circleR) / 2
             if let image = buttons[i].image {
-                let btn = TRPCirleButton(frame: CGRect(x: startX, y:startY, width: cirleR, height: cirleR),
+                let btn = TRPCirleButton(frame: CGRect(x: startX, y:startY, width: circleR, height: circleR),
                                          normalImage:image,
                                          titleName: buttons[i].name)
                 btn.alpha = 0
@@ -227,7 +236,6 @@ extension TRPCircleMenu {
                 createdSubButtons.append(btn)
             }
         }
-        
     }
     
     @objc func subButtonPressed(_ sender: UIButton) {
@@ -239,16 +247,18 @@ extension TRPCircleMenu {
 
 
 extension TRPCircleMenu {
-    func addAnimation() {
+    func addAnimation() { //TODO: asd
         isAnimating = true
         animator.addAnimations {
             if self.currentStatus == .close {
+                self.delegate?.animateMapOverlay(true)
                 for i in 0..<self.createdSubButtons.count {
-                    let position = (self.containerView!.frame.width - 40 - self.subButtonSpace) - ((40 + self.subButtonSpace) * CGFloat(i))
+                    let position = (self.containerView!.frame.width - self.circleR - self.subButtonSpace) - ((self.circleR + self.subButtonSpace) * CGFloat(i))
                     self.createdSubButtons[i].transform = CGAffineTransform(translationX: -position, y: 0)
                     self.createdSubButtons[i].alpha = 1
                 }
             }else {
+                self.delegate?.animateMapOverlay(false)
                 for i in 0..<self.subButtons.count {
                     self.createdSubButtons[i].transform = CGAffineTransform.identity
                     self.createdSubButtons[i].alpha = 0

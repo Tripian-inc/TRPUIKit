@@ -8,6 +8,7 @@ provides-member:
 provides-dynamic-lookup:
 depends-top-level:
 - "AnyObject"
+- "Bool"
 - "Int"
 - "TRPCircleMenu"
 - "TRPCirleMenuDelegate"
@@ -23,9 +24,11 @@ depends-member:
 - ["So8NSObjectC", "CurrentState"]
 - ["So8NSObjectP", "CurrentState"]
 - ["8TRPUIKit13TRPCircleMenuC", "CurrentState"]
+- ["8TRPUIKit20TRPCirleMenuDelegateP", "Bool"]
 - ["8TRPUIKit20TRPCirleMenuDelegateP", "Int"]
 - ["8TRPUIKit20TRPCirleMenuDelegateP", "TRPCircleMenu"]
 - ["8TRPUIKit20TRPCirleMenuDelegateP", "UIButton"]
+- ["8TRPUIKit20TRPCirleMenuDelegateP", "animateMapOverlay"]
 - ["8TRPUIKit20TRPCirleMenuDelegateP", "circleMenu"]
 - ["So48UIAccessibilityContentSizeCategoryImageAdjustingP", "CurrentState"]
 - ["So29UIAccessibilityIdentificationP", "CurrentState"]
@@ -93,8 +96,8 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
-- "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPUIKit.h"
-- "/Users/evrenyasar/Xcode/TRPUIKit/build/TRPUIKit.build/Debug-iphoneos/TRPUIKit.build/unextended-module.modulemap"
+- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/TRPUIKit/TRPUIKit.h"
+- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/build/TRPUIKit.build/Debug-iphoneos/TRPUIKit.build/unextended-module.modulemap"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
@@ -107,4 +110,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "4621ecd15636df247ef783f49f34a5e1"
+interface-hash: "f1a309585c456fe78b7b7b23b4de0fd9"

@@ -8,8 +8,6 @@ provides-member:
 provides-dynamic-lookup:
 depends-top-level:
 - "/"
-- "FloatLiteralType"
-- "IntegerLiteralType"
 - "TRPColor"
 - "UIColor"
 depends-member:
@@ -29,6 +27,7 @@ depends-member:
 - ["8TRPUIKit8TRPColorV", "UIColor"]
 - ["8TRPUIKit8TRPColorV", "blue"]
 - ["8TRPUIKit8TRPColorV", "darkGrey"]
+- ["8TRPUIKit8TRPColorV", "darkerGrey"]
 - ["8TRPUIKit8TRPColorV", "errorMessage"]
 - ["8TRPUIKit8TRPColorV", "infoMessage"]
 - ["8TRPUIKit8TRPColorV", "init"]
@@ -38,6 +37,7 @@ depends-member:
 - ["8TRPUIKit8TRPColorV", "orange"]
 - ["8TRPUIKit8TRPColorV", "pink"]
 - ["8TRPUIKit8TRPColorV", "successMessage"]
+- ["8TRPUIKit8TRPColorV", "taxiYellow"]
 - ["8TRPUIKit8TRPColorV", "warningMessage"]
 - ["8TRPUIKit8TRPColorV", "yellow"]
 - ["So7UIColorC", "init"]
@@ -74,8 +74,8 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/SwiftOnoneSupport.swiftmodule"
-- "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPUIKit.h"
-- "/Users/evrenyasar/Xcode/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/unextended-module.modulemap"
+- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/TRPUIKit/TRPUIKit.h"
+- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/unextended-module.modulemap"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
@@ -88,4 +88,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "630c6cc185dc45a20fd22257cf80262d"
+interface-hash: "9d95cf8e5afa1d2304f9720d0fd4d2c1"

@@ -4,28 +4,28 @@
   'roots': [
     {
       'type': 'directory',
-      'name': "/Users/evrenyasar/Library/Developer/Xcode/DerivedData/TRPTestApp-gvhwooczxgmxxfguawbihchrehlg/Build/Products/Debug-iphonesimulator/TRPUIKit.framework/Headers",
+      'name': "/Users/rozeridilar/Library/Developer/Xcode/DerivedData/TripianDevApp-faovwsydknhegqflylboxujnuckb/Build/Products/Debug-iphonesimulator/TRPUIKit.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "TRPUIKit-Swift.h",
-          'external-contents': "/Users/evrenyasar/Library/Developer/Xcode/DerivedData/TRPTestApp-gvhwooczxgmxxfguawbihchrehlg/Build/Products/Debug-iphonesimulator/TRPUIKit.framework/Headers/TRPUIKit-Swift.h"
+          'external-contents': "/Users/rozeridilar/Library/Developer/Xcode/DerivedData/TripianDevApp-faovwsydknhegqflylboxujnuckb/Build/Products/Debug-iphonesimulator/TRPUIKit.framework/Headers/TRPUIKit-Swift.h"
         },
         {
           'type': 'file',
           'name': "TRPUIKit.h",
-          'external-contents': "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPUIKit.h"
+          'external-contents': "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/TRPUIKit/TRPUIKit.h"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/evrenyasar/Library/Developer/Xcode/DerivedData/TRPTestApp-gvhwooczxgmxxfguawbihchrehlg/Build/Products/Debug-iphonesimulator/TRPUIKit.framework/Modules",
+      'name': "/Users/rozeridilar/Library/Developer/Xcode/DerivedData/TripianDevApp-faovwsydknhegqflylboxujnuckb/Build/Products/Debug-iphonesimulator/TRPUIKit.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/evrenyasar/Xcode/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/module.modulemap"
+          'external-contents': "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/module.modulemap"
         }
       ]
     }

@@ -19,7 +19,7 @@ public class TRPAddPlaceFilterVC {
     public var title:String? = nil
     public var message:String? = nil
     public var recommendataionText = "Recommendation"
-    public var nearByText = "Near By"
+    public var nearByText = "Nearby"
     
     public init(selectedButton: ButtonType, handler: ((ButtonType) -> Swift.Void)? = nil) {
         self.mHandler = handler
