@@ -25,6 +25,7 @@ open class TRPCircleMenu: UIButton {
     private var selectedImageView: UIImageView?
     private var isNormal: Bool = true
     private var containerView: UIView?
+    private var darkOverlayView: UIView?
     private var subButtonsPosition: Position = .left
     public var subButtonSpace: CGFloat = 35
     private var circleR: CGFloat = 50
@@ -34,9 +35,9 @@ open class TRPCircleMenu: UIButton {
             delegate?.circleMenu(self, changedState: currentStatus)
         }
     }
+    
     private var isAnimating = false
     public weak var delegate: TRPCirleMenuDelegate?
-    
     
     public init(frame: CGRect,
                 normalIcon: UIImage?,
@@ -81,6 +82,7 @@ open class TRPCircleMenu: UIButton {
     
     open override func layoutSubviews() {
         if containerView == nil {
+            createDarkOverlayView()
             createContainerView()
             containerView!.alpha = 0
             containerView!.isHidden = true
@@ -168,8 +170,9 @@ extension TRPCircleMenu {
     
     fileprivate func createContainerView() {
         containerView = UIView(frame: CGRect.zero)
-        superview?.insertSubview(containerView!, belowSubview: self)
-        containerView!.translatesAutoresizingMaskIntoConstraints = false
+        guard let containerView = containerView else {return}
+        superview?.insertSubview(containerView, belowSubview: self)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
         
         var width: CGFloat = 240
         if UIScreen.main.bounds.width < 325.0{//Iphone 5 ve diger kucukleri icin
@@ -183,32 +186,98 @@ extension TRPCircleMenu {
         case .left:
             width = CGFloat(subButtons.count) * CGFloat(40 + subButtonSpace)
             height = frame.height
-            containerView!.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-            containerView!.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            containerView.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+            containerView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
             break
         case .right:
             width = CGFloat(subButtons.count) * CGFloat(40 + subButtonSpace)
             height = frame.height
-            containerView!.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-            containerView!.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            containerView.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+            containerView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
             break
         case .top:
             height = CGFloat(subButtons.count) * CGFloat(40 + subButtonSpace)
             width = frame.height
-            containerView!.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-            containerView!.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            containerView.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+            containerView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
             break
         case .bottom:
             height = CGFloat(subButtons.count) * CGFloat(40 + subButtonSpace)
             width = frame.height
-            containerView!.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-            containerView!.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            containerView.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+            containerView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
             break
         }
-        containerView!.widthAnchor.constraint(equalToConstant: width + 40).isActive = true
-        containerView!.heightAnchor.constraint(equalToConstant: height).isActive = true
+        containerView.widthAnchor.constraint(equalToConstant: width + 40).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        //superview?.bringSubviewToFront(containerView)
+        darkOverlayView?.bringSubviewToFront(containerView)
+    }
+}
+
+// MARK: - Dark Overlay view
+extension TRPCircleMenu {
+    private func createDarkOverlayView() {
+        darkOverlayView = UIView(frame: CGRect.zero)
+        guard let darkOverlayView = darkOverlayView else {return}
+        superview?.insertSubview(darkOverlayView, belowSubview: self)
+        //superview?.sendSubviewToBack(darkOverlayView)
+        darkOverlayView.translatesAutoresizingMaskIntoConstraints = false
+        //darkOverlayView.isUserInteractionEnabled = false
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(darkOverlayPressed))
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(darkOverlayPressed))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(darkOverlayPressed))
+        darkOverlayView.addGestureRecognizer(pan)
+        darkOverlayView.addGestureRecognizer(swipe)
+        darkOverlayView.addGestureRecognizer(tap)
+        tap.require(toFail: swipe)
+        swipe.require(toFail: pan)
+        darkOverlayView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        darkOverlayView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
     }
     
+    private func updateOverlayView(){
+        if self.currentStatus == .close {
+            self.showDarkOverlayView()
+        }else {
+            self.hideDarkOverlayView()
+        }
+    }
+    
+    private func showDarkOverlayView(){
+        guard let darkOverlayView = darkOverlayView else {return}
+        darkOverlayView.layer.backgroundColor = UIColor.black.cgColor
+        darkOverlayView.layer.opacity = 0.6
+        darkOverlayView.isUserInteractionEnabled = true
+    }
+    
+    private func hideDarkOverlayView(){
+        guard let darkOverlayView = darkOverlayView else {return}
+        darkOverlayView.layer.backgroundColor = UIColor.clear.cgColor
+        darkOverlayView.layer.opacity = 1
+        darkOverlayView.isUserInteractionEnabled = false
+    }
+    
+    //MARK: - Dark Overlay Objc Funcs
+    @objc func darkOverlayPressed() {
+      //  if gestureRecognizer.state == UIGestureRecognizer.State.began{
+            if currentStatus == .open{
+                if isAnimating == true {return}
+                tapRotatedAnimation(0.4, isSelected: !self.isSelected)
+                if createdSubButtons.count == 0 {
+                    createSubButtons(subButtons)
+                }
+                if isSelected {
+                    containerView!.alpha = 1
+                    self.containerView!.isHidden = false
+                }
+                addAnimation()
+            }
+            else{
+                hideDarkOverlayView()
+            }
+     //   }
+    }
 }
 
 // MARK: SubButtons
@@ -244,24 +313,22 @@ extension TRPCircleMenu {
     
 }
 
-
-
 extension TRPCircleMenu {
-    func addAnimation() { //TODO: asd
+    func addAnimation() {
         isAnimating = true
-        animator.addAnimations {
-            if self.currentStatus == .close {
-                self.delegate?.animateMapOverlay(true)
-                for i in 0..<self.createdSubButtons.count {
-                    let position = (self.containerView!.frame.width - self.circleR - self.subButtonSpace) - ((self.circleR + self.subButtonSpace) * CGFloat(i))
-                    self.createdSubButtons[i].transform = CGAffineTransform(translationX: -position, y: 0)
-                    self.createdSubButtons[i].alpha = 1
+        updateOverlayView()
+        animator.addAnimations { [weak self] in
+            guard let strongSelf = self else {return}
+            if strongSelf.currentStatus == .close {
+                for i in 0..<strongSelf.createdSubButtons.count {
+                    let position = (strongSelf.containerView!.frame.width - strongSelf.circleR - strongSelf.subButtonSpace) - ((strongSelf.circleR + strongSelf.subButtonSpace) * CGFloat(i))
+                    strongSelf.createdSubButtons[i].transform = CGAffineTransform(translationX: -position, y: 0)
+                    strongSelf.createdSubButtons[i].alpha = 1
                 }
             }else {
-                self.delegate?.animateMapOverlay(false)
-                for i in 0..<self.subButtons.count {
-                    self.createdSubButtons[i].transform = CGAffineTransform.identity
-                    self.createdSubButtons[i].alpha = 0
+                for i in 0..<strongSelf.subButtons.count {
+                    strongSelf.createdSubButtons[i].transform = CGAffineTransform.identity
+                    strongSelf.createdSubButtons[i].alpha = 0
                 }
             }
         }

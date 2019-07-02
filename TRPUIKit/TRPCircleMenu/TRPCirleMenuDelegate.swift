@@ -9,8 +9,5 @@
 import Foundation
 public protocol TRPCirleMenuDelegate: AnyObject {
     func circleMenu(_ circleMenu: TRPCircleMenu, onPress button: UIButton, atIndex: Int)
-    
     func circleMenu(_ circleMenu: TRPCircleMenu, changedState state: TRPCircleMenu.CurrentState)
-    
-    func animateMapOverlay(_ show: Bool)
 }

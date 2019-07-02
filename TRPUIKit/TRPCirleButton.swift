@@ -76,7 +76,6 @@ public class TRPCirleButton: UIButton {
             setImage(selected, for: .selected)
         }
         
-       
         titleLbl.widthAnchor.constraint(equalTo: self.widthAnchor, constant: UIScreen.main.bounds.width < 325.0 ? 15 : 17).isActive = true
         titleLbl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -11).isActive = true
         titleLbl.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 6).isActive = true
