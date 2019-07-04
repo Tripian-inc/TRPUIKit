@@ -53,7 +53,7 @@ public class TRPSearchAreaButton: UIButton {
     
     public var isAnimating = false
     public var isOpen: Bool = false
-    public var zoomLevelTrashHold: Double = 12.4
+    public var zoomLevelTrashHold: Double = 20 //12.4 //asd
     
     public init(frame: CGRect, title:String) {
         super.init(frame: frame)
@@ -126,6 +126,10 @@ public class TRPSearchAreaButton: UIButton {
                 hidden()
             }
         }
+    }
+    
+    public func setZoomLevelTreshold(_ level: Double){
+        self.zoomLevelTrashHold = level
     }
     
 }

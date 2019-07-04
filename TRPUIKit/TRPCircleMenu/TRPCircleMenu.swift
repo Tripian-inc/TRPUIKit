@@ -4,7 +4,7 @@
 //
 //  Created by Evren Yaşar on 28.09.2018.
 //  Copyright © 2018 Evren Yaşar. All rights reserved.
-//
+//`
 
 import Foundation
 import UIKit
@@ -90,16 +90,22 @@ open class TRPCircleMenu: UIButton {
     }
     
     @objc func onPressed() {
-        if isAnimating == true {return}
-        tapRotatedAnimation(0.4, isSelected: !self.isSelected)
-        if createdSubButtons.count == 0 {
-            createSubButtons(subButtons)
+        animateCircleView()
+    }
+    
+    private func animateCircleView(){
+        DispatchQueue.main.async {
+            if self.isAnimating == true {return}
+            self.tapRotatedAnimation(0.4, isSelected: !self.isSelected)
+            if self.createdSubButtons.count == 0 {
+                self.createSubButtons(self.subButtons)
+            }
+            if self.isSelected {
+                self.containerView!.alpha = 1
+                self.containerView!.isHidden = false
+            }
+            self.addAnimation()
         }
-        if isSelected {
-            containerView!.alpha = 1
-            self.containerView!.isHidden = false
-        }
-        addAnimation()
     }
     
     private func setCenter(imageView: UIImageView) {
@@ -246,6 +252,13 @@ extension TRPCircleMenu {
     
     private func showDarkOverlayView(){
         guard let darkOverlayView = darkOverlayView else {return}
+        //Burada emulatorde sorun yaratiyor ona bak
+        //        superview?.bringSubviewToFront(darkOverlayView)
+        //        superview?.bringSubviewToFront(containerView)
+        //        superview?.bringSubviewToFront(self)
+        //        containerView.sendSubviewToBack(darkOverlayView)
+        //        superview?.insertSubview(darkOverlayView, belowSubview: self)
+        //        darkOverlayView.bringSubviewToFront(containerView)
         darkOverlayView.layer.backgroundColor = UIColor.black.cgColor
         darkOverlayView.layer.opacity = 0.6
         darkOverlayView.isUserInteractionEnabled = true
@@ -254,29 +267,18 @@ extension TRPCircleMenu {
     private func hideDarkOverlayView(){
         guard let darkOverlayView = darkOverlayView else {return}
         darkOverlayView.layer.backgroundColor = UIColor.clear.cgColor
-        darkOverlayView.layer.opacity = 1
+        darkOverlayView.layer.opacity = 0
         darkOverlayView.isUserInteractionEnabled = false
     }
     
     //MARK: - Dark Overlay Objc Funcs
     @objc func darkOverlayPressed() {
-      //  if gestureRecognizer.state == UIGestureRecognizer.State.began{
-            if currentStatus == .open{
-                if isAnimating == true {return}
-                tapRotatedAnimation(0.4, isSelected: !self.isSelected)
-                if createdSubButtons.count == 0 {
-                    createSubButtons(subButtons)
-                }
-                if isSelected {
-                    containerView!.alpha = 1
-                    self.containerView!.isHidden = false
-                }
-                addAnimation()
-            }
-            else{
-                hideDarkOverlayView()
-            }
-     //   }
+        if currentStatus == .open{
+            animateCircleView()
+        }
+        else{
+            hideDarkOverlayView()
+        }
     }
 }
 
@@ -315,34 +317,37 @@ extension TRPCircleMenu {
 
 extension TRPCircleMenu {
     func addAnimation() {
-        isAnimating = true
-        updateOverlayView()
-        animator.addAnimations { [weak self] in
-            guard let strongSelf = self else {return}
-            if strongSelf.currentStatus == .close {
-                for i in 0..<strongSelf.createdSubButtons.count {
-                    let position = (strongSelf.containerView!.frame.width - strongSelf.circleR - strongSelf.subButtonSpace) - ((strongSelf.circleR + strongSelf.subButtonSpace) * CGFloat(i))
-                    strongSelf.createdSubButtons[i].transform = CGAffineTransform(translationX: -position, y: 0)
-                    strongSelf.createdSubButtons[i].alpha = 1
-                }
-            }else {
-                for i in 0..<strongSelf.subButtons.count {
-                    strongSelf.createdSubButtons[i].transform = CGAffineTransform.identity
-                    strongSelf.createdSubButtons[i].alpha = 0
+        DispatchQueue.main.async {
+            self.isAnimating = true
+            self.animator.addAnimations { [weak self] in
+                guard let strongSelf = self else {return}
+                strongSelf.updateOverlayView()
+                if strongSelf.currentStatus == .close {
+                    for i in 0..<strongSelf.createdSubButtons.count {
+                        let position = (strongSelf.containerView!.frame.width - strongSelf.circleR - strongSelf.subButtonSpace) - ((strongSelf.circleR + strongSelf.subButtonSpace) * CGFloat(i))
+                        strongSelf.createdSubButtons[i].transform = CGAffineTransform(translationX: -position, y: 0)
+                        strongSelf.createdSubButtons[i].alpha = 1
+                    }
+                }else {
+                    for i in 0..<strongSelf.subButtons.count {
+                        strongSelf.createdSubButtons[i].transform = CGAffineTransform.identity
+                        strongSelf.createdSubButtons[i].alpha = 0
+                    }
                 }
             }
-        }
-        animator.addCompletion { _ in
-            if self.currentStatus == .close {
-                self.currentStatus = .open
-            }else {
-                self.currentStatus = .close
-                self.containerView!.alpha = 0
-                self.containerView!.isHidden = true
+            self.animator.addCompletion { _ in
+                self.updateOverlayView()
+                if self.currentStatus == .close {
+                    self.currentStatus = .open
+                }else {
+                    self.currentStatus = .close
+                    self.containerView!.alpha = 0
+                    self.containerView!.isHidden = true
+                }
+                self.isAnimating = false
             }
-            self.isAnimating = false
+            self.animator.startAnimation()
         }
-        animator.startAnimation()
     }
 }
 
