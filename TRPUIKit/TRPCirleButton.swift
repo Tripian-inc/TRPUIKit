@@ -64,30 +64,29 @@ public class TRPCirleButton: UIButton {
     }
     
     private func commonInit() {
-        // addSubview(imgView)
-        addSubview(titleLbl)
-        backgroundColor = normalBg
-        if let titleName = titleName {
-            titleLbl.text = titleName
-        }
         
+        if titleName != nil {
+            addSubview(titleLbl)
+            if let titleName = titleName {
+                titleLbl.text = titleName
+            }
+            titleLbl.widthAnchor.constraint(equalTo: self.widthAnchor, constant: UIScreen.main.bounds.width < 325.0 ? 15 : 17).isActive = true
+            titleLbl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -11).isActive = true
+            titleLbl.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 6).isActive = true
+            titleLbl.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        }
+        backgroundColor = normalBg
         setImage(normalImage, for: .normal)
         if let selected = selectedImage {
             setImage(selected, for: .selected)
         }
         
-        titleLbl.widthAnchor.constraint(equalTo: self.widthAnchor, constant: UIScreen.main.bounds.width < 325.0 ? 15 : 17).isActive = true
-        titleLbl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -11).isActive = true
-        titleLbl.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 6).isActive = true
-        titleLbl.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-     
         layer.cornerRadius = frame.width / 2
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
+        layer.shadowOpacity = 0.3
         layer.shadowOffset = CGSize(width: -1, height: 1)
         layer.shadowRadius = 1
-        
         addTarget(self, action: #selector(onPressed), for: UIControl.Event.touchUpInside)
     }
     

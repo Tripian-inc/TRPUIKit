@@ -56,13 +56,19 @@ public struct CallOutCellMode {
 }
 
 public class TRPCallOutController {
-    let transformY: CGFloat = 200
+    
+    public enum CallOutStatus {
+        case willShow, didShow, willHidden, didHidden
+    }
+    
+    let transformY: CGFloat = 250
     var parentView: UIView
     var cell: TRPCallOutCell?;
     public var isOpen = false
     public var isAnimating = false
     public var cellPressed: ((_ id: Int,  _ inRoute: Bool)-> Void)? = nil
     public var action: ((_ status:AddRemoveNavButtonStatus, _ id:Int) -> Void)? = nil
+    public var callOutStatus: ((_ status:CallOutStatus) -> Void)? = nil
     private var model: CallOutCellMode?
     private var addBtnImage: UIImage?
     private var removeBtnImage: UIImage?
@@ -146,21 +152,30 @@ public class TRPCallOutController {
     }
     
     private func showAnimation() {
+        callOutStatus?(.willShow)
         cell?.transform = CGAffineTransform(translationX: 0, y: transformY)
         UIView.animate(withDuration: 0.2, delay:0, options: .curveEaseOut, animations: {
             self.cell?.transform = CGAffineTransform.identity
+            self.cell?.alpha = 1
         }) { (_) in
             self.cell?.transform = CGAffineTransform.identity
+            self.cell?.alpha = 1
+            self.callOutStatus?(.didShow)
         }
     }
     
     private func hiddenAnimation() {
+        callOutStatus?(.willHidden)
         UIView.animate(withDuration: 0.2, delay:0, options: .curveEaseIn, animations: {
             self.cell?.transform = CGAffineTransform(translationX: 0, y: self.transformY)
+            self.cell?.alpha = 0
         }) { (_) in
+            self.cell?.alpha = 0
             self.cell?.transform = CGAffineTransform(translationX: 0, y: self.transformY)
+            self.callOutStatus?(.didHidden)
         }
     }
+    
 }
 
 class TRPCallOutCell: UIView {

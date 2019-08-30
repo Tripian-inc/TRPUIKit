@@ -386,6 +386,7 @@ depends-member:
 - !private ["So8NSObjectC", "red"]
 - !private ["So8NSObjectC", "setTitle"]
 - !private ["So8NSObjectC", "setTitleColor"]
+- ["So8NSObjectC", "setZoomLevelTreshold"]
 - ["So8NSObjectC", "shadowColor"]
 - !private ["So8NSObjectC", "shadowOffset"]
 - ["So8NSObjectC", "shadowOpacity"]
@@ -484,6 +485,7 @@ depends-member:
 - !private ["8TRPUIKit19TRPSearchAreaButtonC", "layer"]
 - !private ["8TRPUIKit19TRPSearchAreaButtonC", "setTitle"]
 - !private ["8TRPUIKit19TRPSearchAreaButtonC", "setTitleColor"]
+- ["8TRPUIKit19TRPSearchAreaButtonC", "setZoomLevelTreshold"]
 - ["8TRPUIKit19TRPSearchAreaButtonC", "shadowColor"]
 - ["8TRPUIKit19TRPSearchAreaButtonC", "shadowOpacity"]
 - ["8TRPUIKit19TRPSearchAreaButtonC", "shadowRadius"]
@@ -661,6 +663,7 @@ depends-member:
 - !private ["So8UIButtonC", "layer"]
 - !private ["So8UIButtonC", "setTitle"]
 - !private ["So8UIButtonC", "setTitleColor"]
+- ["So8UIButtonC", "setZoomLevelTreshold"]
 - ["So8UIButtonC", "shadowColor"]
 - ["So8UIButtonC", "shadowOpacity"]
 - ["So8UIButtonC", "shadowRadius"]
@@ -705,6 +708,7 @@ depends-member:
 - !private ["So9UIControlC", "layer"]
 - !private ["So9UIControlC", "setTitle"]
 - !private ["So9UIControlC", "setTitleColor"]
+- ["So9UIControlC", "setZoomLevelTreshold"]
 - ["So9UIControlC", "shadowColor"]
 - ["So9UIControlC", "shadowOpacity"]
 - ["So9UIControlC", "shadowRadius"]
@@ -959,6 +963,7 @@ depends-member:
 - !private ["So11UIResponderC", "layer"]
 - !private ["So11UIResponderC", "setTitle"]
 - !private ["So11UIResponderC", "setTitleColor"]
+- ["So11UIResponderC", "setZoomLevelTreshold"]
 - ["So11UIResponderC", "shadowColor"]
 - ["So11UIResponderC", "shadowOpacity"]
 - ["So11UIResponderC", "shadowRadius"]
@@ -1138,6 +1143,7 @@ depends-member:
 - !private ["So6UIViewC", "layer"]
 - !private ["So6UIViewC", "setTitle"]
 - !private ["So6UIViewC", "setTitleColor"]
+- ["So6UIViewC", "setZoomLevelTreshold"]
 - ["So6UIViewC", "shadowColor"]
 - ["So6UIViewC", "shadowOpacity"]
 - ["So6UIViewC", "shadowRadius"]
@@ -1313,8 +1319,8 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/TRPUIKit/TRPUIKit.h"
-- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/unextended-module.modulemap"
+- "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPUIKit.h"
+- "/Users/evrenyasar/Xcode/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/unextended-module.modulemap"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
@@ -1327,4 +1333,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "5cf0c3bc2bca3217f5c6e74b0d2c099a"
+interface-hash: "2dec8848706d9f0f7bf102d67be3c9c8"

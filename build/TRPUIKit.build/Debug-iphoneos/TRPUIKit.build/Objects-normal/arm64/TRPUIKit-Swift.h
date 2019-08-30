@@ -203,6 +203,8 @@ SWIFT_CLASS("_TtC8TRPUIKit13TRPCircleMenu")
 
 
 
+
+
 SWIFT_CLASS("_TtC8TRPUIKit14TRPCirleButton")
 @interface TRPCirleButton : UIButton
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;

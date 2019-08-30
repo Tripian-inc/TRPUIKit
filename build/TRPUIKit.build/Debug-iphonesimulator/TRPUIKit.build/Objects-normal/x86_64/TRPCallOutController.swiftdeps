@@ -8,11 +8,13 @@ provides-nominal:
 - "8TRPUIKit24AddRemoveNavButtonStatusO"
 - "8TRPUIKit15CallOutCellModeV"
 - "8TRPUIKit20TRPCallOutControllerC"
+- "8TRPUIKit20TRPCallOutControllerC04CallC6StatusO"
 - "8TRPUIKit14TRPCallOutCellC"
 provides-member:
 - ["8TRPUIKit24AddRemoveNavButtonStatusO", ""]
 - ["8TRPUIKit15CallOutCellModeV", ""]
 - ["8TRPUIKit20TRPCallOutControllerC", ""]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", ""]
 - ["8TRPUIKit14TRPCallOutCellC", ""]
 provides-dynamic-lookup:
 - "addRemoveNavigationButtonPressed"
@@ -30,6 +32,7 @@ depends-top-level:
 - "AddRemoveNavButtonStatus"
 - "AssignmentPrecedence"
 - "Bool"
+- "BooleanLiteralType"
 - !private "CGAffineTransform"
 - "CGFloat"
 - "CGRect"
@@ -123,6 +126,7 @@ depends-member:
 - !private ["So15CALayerDelegateP", "addSubview"]
 - ["So15CALayerDelegateP", "addTarget"]
 - !private ["So15CALayerDelegateP", "alignment"]
+- !private ["So15CALayerDelegateP", "alpha"]
 - !private ["So15CALayerDelegateP", "animate"]
 - !private ["So15CALayerDelegateP", "attributedText"]
 - !private ["So15CALayerDelegateP", "axis"]
@@ -216,6 +220,7 @@ depends-member:
 - !private ["s7CVarArgP", "addSubview"]
 - ["s7CVarArgP", "addTarget"]
 - !private ["s7CVarArgP", "alignment"]
+- !private ["s7CVarArgP", "alpha"]
 - !private ["s7CVarArgP", "animate"]
 - !private ["s7CVarArgP", "attributedText"]
 - !private ["s7CVarArgP", "axis"]
@@ -291,6 +296,16 @@ depends-member:
 - ["8TRPUIKit15CallOutCellModeV", "reviewCount"]
 - ["8TRPUIKit15CallOutCellModeV", "rightButtonStatus"]
 - ["8TRPUIKit15CallOutCellModeV", "startCount"]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "=="]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "__derived_enum_equals"]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "_rawHashValue"]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "deinit"]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "didHidden"]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "didShow"]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "hash"]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "hashValue"]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "willHidden"]
+- ["8TRPUIKit20TRPCallOutControllerC04CallC6StatusO", "willShow"]
 - !private ["Sl", "Encoding"]
 - !private ["Sl", "init"]
 - !private ["Sl", "lengthOfBytes"]
@@ -334,6 +349,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "addSubview"]
 - ["s28CustomDebugStringConvertibleP", "addTarget"]
 - !private ["s28CustomDebugStringConvertibleP", "alignment"]
+- !private ["s28CustomDebugStringConvertibleP", "alpha"]
 - !private ["s28CustomDebugStringConvertibleP", "animate"]
 - !private ["s28CustomDebugStringConvertibleP", "attributedText"]
 - !private ["s28CustomDebugStringConvertibleP", "axis"]
@@ -438,6 +454,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "addSubview"]
 - ["s23CustomStringConvertibleP", "addTarget"]
 - !private ["s23CustomStringConvertibleP", "alignment"]
+- !private ["s23CustomStringConvertibleP", "alpha"]
 - !private ["s23CustomStringConvertibleP", "animate"]
 - !private ["s23CustomStringConvertibleP", "appendInterpolation"]
 - !private ["s23CustomStringConvertibleP", "appendLiteral"]
@@ -563,6 +580,7 @@ depends-member:
 - !private ["SQ", "addSubview"]
 - ["SQ", "addTarget"]
 - !private ["SQ", "alignment"]
+- !private ["SQ", "alpha"]
 - ["SQ", "alternative"]
 - !private ["SQ", "animate"]
 - !private ["SQ", "attributedText"]
@@ -583,6 +601,8 @@ depends-member:
 - !private ["SQ", "curveEaseIn"]
 - !private ["SQ", "curveEaseOut"]
 - !private ["SQ", "darkGray"]
+- !private ["SQ", "didHidden"]
+- !private ["SQ", "didShow"]
 - !private ["SQ", "distribution"]
 - !private ["SQ", "explaineStringCreater"]
 - !private ["SQ", "fatalError"]
@@ -647,6 +667,8 @@ depends-member:
 - !private ["SQ", "vertical"]
 - !private ["SQ", "white"]
 - ["SQ", "widthAnchor"]
+- !private ["SQ", "willHidden"]
+- !private ["SQ", "willShow"]
 - ["SQ", "zero"]
 - ["So15UIControlEventsV", "touchUpInside"]
 - !private ["s25ExpressibleByArrayLiteralP", "curveEaseIn"]
@@ -706,6 +728,7 @@ depends-member:
 - !private ["SH", "addSubview"]
 - ["SH", "addTarget"]
 - !private ["SH", "alignment"]
+- !private ["SH", "alpha"]
 - ["SH", "alternative"]
 - !private ["SH", "animate"]
 - !private ["SH", "attributedText"]
@@ -723,6 +746,8 @@ depends-member:
 - ["SH", "contentMode"]
 - ["SH", "cornerRadius"]
 - !private ["SH", "darkGray"]
+- !private ["SH", "didHidden"]
+- !private ["SH", "didShow"]
 - !private ["SH", "distribution"]
 - !private ["SH", "explaineStringCreater"]
 - !private ["SH", "fatalError"]
@@ -782,6 +807,8 @@ depends-member:
 - !private ["SH", "vertical"]
 - !private ["SH", "white"]
 - ["SH", "widthAnchor"]
+- !private ["SH", "willHidden"]
+- !private ["SH", "willShow"]
 - !private ["s6HasherV", "combine"]
 - !private ["Si", "init"]
 - !private ["So21NSAttributedStringKeya", "font"]
@@ -829,6 +856,7 @@ depends-member:
 - !private ["So8NSCodingP", "addSubview"]
 - ["So8NSCodingP", "addTarget"]
 - !private ["So8NSCodingP", "alignment"]
+- !private ["So8NSCodingP", "alpha"]
 - !private ["So8NSCodingP", "animate"]
 - !private ["So8NSCodingP", "attributedText"]
 - !private ["So8NSCodingP", "axis"]
@@ -969,6 +997,7 @@ depends-member:
 - !private ["So8NSObjectC", "addSubview"]
 - ["So8NSObjectC", "addTarget"]
 - !private ["So8NSObjectC", "alignment"]
+- !private ["So8NSObjectC", "alpha"]
 - !private ["So8NSObjectC", "animate"]
 - !private ["So8NSObjectC", "attributedText"]
 - !private ["So8NSObjectC", "axis"]
@@ -1071,6 +1100,7 @@ depends-member:
 - !private ["So8NSObjectP", "addSubview"]
 - ["So8NSObjectP", "addTarget"]
 - !private ["So8NSObjectP", "alignment"]
+- !private ["So8NSObjectP", "alpha"]
 - !private ["So8NSObjectP", "animate"]
 - !private ["So8NSObjectP", "attributedText"]
 - !private ["So8NSObjectP", "axis"]
@@ -1219,6 +1249,7 @@ depends-member:
 - !private ["8TRPUIKit14TRPCallOutCellC", "addRemoveNavigationButton.storage"]
 - ["8TRPUIKit14TRPCallOutCellC", "addRemoveNavigationButtonPressed"]
 - !private ["8TRPUIKit14TRPCallOutCellC", "addSubview"]
+- !private ["8TRPUIKit14TRPCallOutCellC", "alpha"]
 - !private ["8TRPUIKit14TRPCallOutCellC", "backgroundColor"]
 - !private ["8TRPUIKit14TRPCallOutCellC", "bottomAnchor"]
 - ["8TRPUIKit14TRPCallOutCellC", "cellPressed"]
@@ -1257,6 +1288,7 @@ depends-member:
 - !private ["8TRPUIKit20TRPCallOutControllerC", "CGAffineTransform"]
 - ["8TRPUIKit20TRPCallOutControllerC", "CGFloat"]
 - ["8TRPUIKit20TRPCallOutControllerC", "CallOutCellMode"]
+- ["8TRPUIKit20TRPCallOutControllerC", "CallOutStatus"]
 - ["8TRPUIKit20TRPCallOutControllerC", "Int"]
 - ["8TRPUIKit20TRPCallOutControllerC", "TRPCallOutCell"]
 - ["8TRPUIKit20TRPCallOutControllerC", "UIImage"]
@@ -1266,6 +1298,7 @@ depends-member:
 - ["8TRPUIKit20TRPCallOutControllerC", "action"]
 - !private ["8TRPUIKit20TRPCallOutControllerC", "addBtnImage"]
 - ["8TRPUIKit20TRPCallOutControllerC", "bottomSpace"]
+- ["8TRPUIKit20TRPCallOutControllerC", "callOutStatus"]
 - ["8TRPUIKit20TRPCallOutControllerC", "cell"]
 - ["8TRPUIKit20TRPCallOutControllerC", "cellPressed"]
 - !private ["8TRPUIKit20TRPCallOutControllerC", "commonInit"]
@@ -1346,6 +1379,7 @@ depends-member:
 - !private ["So29UIAccessibilityIdentificationP", "addSubview"]
 - ["So29UIAccessibilityIdentificationP", "addTarget"]
 - !private ["So29UIAccessibilityIdentificationP", "alignment"]
+- !private ["So29UIAccessibilityIdentificationP", "alpha"]
 - !private ["So29UIAccessibilityIdentificationP", "animate"]
 - !private ["So29UIAccessibilityIdentificationP", "attributedText"]
 - !private ["So29UIAccessibilityIdentificationP", "axis"]
@@ -1426,6 +1460,7 @@ depends-member:
 - !private ["So12UIAppearanceP", "addSubview"]
 - ["So12UIAppearanceP", "addTarget"]
 - !private ["So12UIAppearanceP", "alignment"]
+- !private ["So12UIAppearanceP", "alpha"]
 - !private ["So12UIAppearanceP", "animate"]
 - !private ["So12UIAppearanceP", "attributedText"]
 - !private ["So12UIAppearanceP", "axis"]
@@ -1506,6 +1541,7 @@ depends-member:
 - !private ["So21UIAppearanceContainerP", "addSubview"]
 - ["So21UIAppearanceContainerP", "addTarget"]
 - !private ["So21UIAppearanceContainerP", "alignment"]
+- !private ["So21UIAppearanceContainerP", "alpha"]
 - !private ["So21UIAppearanceContainerP", "animate"]
 - !private ["So21UIAppearanceContainerP", "attributedText"]
 - !private ["So21UIAppearanceContainerP", "axis"]
@@ -1619,6 +1655,7 @@ depends-member:
 - !private ["So17UICoordinateSpaceP", "addSubview"]
 - ["So17UICoordinateSpaceP", "addTarget"]
 - !private ["So17UICoordinateSpaceP", "alignment"]
+- !private ["So17UICoordinateSpaceP", "alpha"]
 - !private ["So17UICoordinateSpaceP", "animate"]
 - !private ["So17UICoordinateSpaceP", "attributedText"]
 - !private ["So17UICoordinateSpaceP", "axis"]
@@ -1699,6 +1736,7 @@ depends-member:
 - !private ["So13UIDynamicItemP", "addSubview"]
 - ["So13UIDynamicItemP", "addTarget"]
 - !private ["So13UIDynamicItemP", "alignment"]
+- !private ["So13UIDynamicItemP", "alpha"]
 - !private ["So13UIDynamicItemP", "animate"]
 - !private ["So13UIDynamicItemP", "attributedText"]
 - !private ["So13UIDynamicItemP", "axis"]
@@ -1783,6 +1821,7 @@ depends-member:
 - !private ["So18UIFocusEnvironmentP", "addSubview"]
 - ["So18UIFocusEnvironmentP", "addTarget"]
 - !private ["So18UIFocusEnvironmentP", "alignment"]
+- !private ["So18UIFocusEnvironmentP", "alpha"]
 - !private ["So18UIFocusEnvironmentP", "animate"]
 - !private ["So18UIFocusEnvironmentP", "attributedText"]
 - !private ["So18UIFocusEnvironmentP", "axis"]
@@ -1863,6 +1902,7 @@ depends-member:
 - !private ["So11UIFocusItemP", "addSubview"]
 - ["So11UIFocusItemP", "addTarget"]
 - !private ["So11UIFocusItemP", "alignment"]
+- !private ["So11UIFocusItemP", "alpha"]
 - !private ["So11UIFocusItemP", "animate"]
 - !private ["So11UIFocusItemP", "attributedText"]
 - !private ["So11UIFocusItemP", "axis"]
@@ -1943,6 +1983,7 @@ depends-member:
 - !private ["So20UIFocusItemContainerP", "addSubview"]
 - ["So20UIFocusItemContainerP", "addTarget"]
 - !private ["So20UIFocusItemContainerP", "alignment"]
+- !private ["So20UIFocusItemContainerP", "alpha"]
 - !private ["So20UIFocusItemContainerP", "animate"]
 - !private ["So20UIFocusItemContainerP", "attributedText"]
 - !private ["So20UIFocusItemContainerP", "axis"]
@@ -2045,6 +2086,7 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "addSubview"]
 - ["So30UIPasteConfigurationSupportingP", "addTarget"]
 - !private ["So30UIPasteConfigurationSupportingP", "alignment"]
+- !private ["So30UIPasteConfigurationSupportingP", "alpha"]
 - !private ["So30UIPasteConfigurationSupportingP", "animate"]
 - !private ["So30UIPasteConfigurationSupportingP", "attributedText"]
 - !private ["So30UIPasteConfigurationSupportingP", "axis"]
@@ -2130,6 +2172,7 @@ depends-member:
 - !private ["So11UIResponderC", "addSubview"]
 - ["So11UIResponderC", "addTarget"]
 - !private ["So11UIResponderC", "alignment"]
+- !private ["So11UIResponderC", "alpha"]
 - !private ["So11UIResponderC", "animate"]
 - !private ["So11UIResponderC", "attributedText"]
 - !private ["So11UIResponderC", "axis"]
@@ -2214,6 +2257,7 @@ depends-member:
 - !private ["So30UIResponderStandardEditActionsP", "addSubview"]
 - ["So30UIResponderStandardEditActionsP", "addTarget"]
 - !private ["So30UIResponderStandardEditActionsP", "alignment"]
+- !private ["So30UIResponderStandardEditActionsP", "alpha"]
 - !private ["So30UIResponderStandardEditActionsP", "animate"]
 - !private ["So30UIResponderStandardEditActionsP", "attributedText"]
 - !private ["So30UIResponderStandardEditActionsP", "axis"]
@@ -2319,6 +2363,7 @@ depends-member:
 - !private ["So18UITraitEnvironmentP", "addSubview"]
 - ["So18UITraitEnvironmentP", "addTarget"]
 - !private ["So18UITraitEnvironmentP", "alignment"]
+- !private ["So18UITraitEnvironmentP", "alpha"]
 - !private ["So18UITraitEnvironmentP", "animate"]
 - !private ["So18UITraitEnvironmentP", "attributedText"]
 - !private ["So18UITraitEnvironmentP", "axis"]
@@ -2399,6 +2444,7 @@ depends-member:
 - !private ["So23UIUserActivityRestoringP", "addSubview"]
 - ["So23UIUserActivityRestoringP", "addTarget"]
 - !private ["So23UIUserActivityRestoringP", "alignment"]
+- !private ["So23UIUserActivityRestoringP", "alpha"]
 - !private ["So23UIUserActivityRestoringP", "animate"]
 - !private ["So23UIUserActivityRestoringP", "attributedText"]
 - !private ["So23UIUserActivityRestoringP", "axis"]
@@ -2485,6 +2531,7 @@ depends-member:
 - !private ["So6UIViewC", "addSubview"]
 - ["So6UIViewC", "addTarget"]
 - !private ["So6UIViewC", "alignment"]
+- !private ["So6UIViewC", "alpha"]
 - !private ["So6UIViewC", "animate"]
 - !private ["So6UIViewC", "attributedText"]
 - !private ["So6UIViewC", "axis"]
@@ -2597,6 +2644,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "addSubview"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "addTarget"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "alignment"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "alpha"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "animate"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "attributedText"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "axis"]
@@ -2706,6 +2754,7 @@ depends-member:
 - !private ["s38__DefaultCustomPlaygroundQuickLookableP", "addSubview"]
 - ["s38__DefaultCustomPlaygroundQuickLookableP", "addTarget"]
 - !private ["s38__DefaultCustomPlaygroundQuickLookableP", "alignment"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "alpha"]
 - !private ["s38__DefaultCustomPlaygroundQuickLookableP", "animate"]
 - !private ["s38__DefaultCustomPlaygroundQuickLookableP", "attributedText"]
 - !private ["s38__DefaultCustomPlaygroundQuickLookableP", "axis"]
@@ -2769,6 +2818,7 @@ depends-nominal:
 - !private "So6CGSizeV"
 - "s7CVarArgP"
 - "8TRPUIKit15CallOutCellModeV"
+- "8TRPUIKit20TRPCallOutControllerC04CallC6StatusO"
 - !private "Sl"
 - !private "SL"
 - "So17UIViewContentModeV"
@@ -2885,8 +2935,8 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/TRPUIKit/TRPUIKit.h"
-- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/unextended-module.modulemap"
+- "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPUIKit.h"
+- "/Users/evrenyasar/Xcode/TRPUIKit/build/TRPUIKit.build/Debug-iphonesimulator/TRPUIKit.build/unextended-module.modulemap"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
@@ -2899,4 +2949,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "daa68d9e4ac01042b37351fc28ee28da"
+interface-hash: "67d2aa6d077eb815042c76ed9a80a041"

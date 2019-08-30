@@ -9,13 +9,18 @@ provides-member:
 - ["8TRPUIKit19TRPAddPlaceFilterVCC10ButtonTypeO", ""]
 provides-dynamic-lookup:
 depends-top-level:
+- !private "/"
 - "=="
 - "AssignmentPrecedence"
+- !private "BooleanLiteralType"
+- !private "FloatLiteralType"
 - "String"
+- "StringLiteralType"
 - "Swift"
 - "TRPAddPlaceFilterVC"
 - !private "UIAlertAction"
 - !private "UIAlertController"
+- !private "UIColor"
 - "UIViewController"
 depends-member:
 - ["8TRPUIKit19TRPAddPlaceFilterVCC10ButtonTypeO", "=="]
@@ -77,6 +82,8 @@ depends-member:
 - !private ["So26NSExtensionRequestHandlingP", "Style"]
 - !private ["So26NSExtensionRequestHandlingP", "addAction"]
 - !private ["So26NSExtensionRequestHandlingP", "init"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
 - !private ["So8NSObjectC", "Style"]
 - !private ["So8NSObjectC", "addAction"]
 - !private ["So8NSObjectC", "init"]
@@ -85,6 +92,7 @@ depends-member:
 - !private ["So8NSObjectP", "addAction"]
 - !private ["So8NSObjectP", "init"]
 - !private ["So8NSObjectP", "setValue"]
+- !private ["So14NSSecureCodingP", "init"]
 - !private ["SY", "actionSheet"]
 - !private ["SY", "cancel"]
 - !private ["SY", "default"]
@@ -96,6 +104,7 @@ depends-member:
 - ["8TRPUIKit19TRPAddPlaceFilterVCC", "Swift"]
 - !private ["8TRPUIKit19TRPAddPlaceFilterVCC", "UIAlertAction"]
 - !private ["8TRPUIKit19TRPAddPlaceFilterVCC", "UIAlertController"]
+- !private ["8TRPUIKit19TRPAddPlaceFilterVCC", "UIColor"]
 - ["8TRPUIKit19TRPAddPlaceFilterVCC", "UIViewController"]
 - ["8TRPUIKit19TRPAddPlaceFilterVCC", "getVC"]
 - ["8TRPUIKit19TRPAddPlaceFilterVCC", "init"]
@@ -114,6 +123,7 @@ depends-member:
 - !private ["So21UIAppearanceContainerP", "Style"]
 - !private ["So21UIAppearanceContainerP", "addAction"]
 - !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So7UIColorC", "init"]
 - !private ["So18UIContentContainerP", "Style"]
 - !private ["So18UIContentContainerP", "addAction"]
 - !private ["So18UIContentContainerP", "init"]
@@ -144,6 +154,7 @@ depends-member:
 - !private ["So16UIViewControllerC", "Style"]
 - !private ["So16UIViewControllerC", "addAction"]
 - !private ["So16UIViewControllerC", "init"]
+- !private ["s26_ExpressibleByColorLiteralP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "Style"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "addAction"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
@@ -159,8 +170,11 @@ depends-nominal:
 - !private "So8NSCodingP"
 - !private "So9NSCopyingP"
 - !private "So26NSExtensionRequestHandlingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
 - !private "So8NSObjectC"
 - !private "So8NSObjectP"
+- !private "So14NSSecureCodingP"
 - !private "SY"
 - !private "So22UIAlertControllerStyleV"
 - !private "So18UIAlertActionStyleV"
@@ -168,6 +182,7 @@ depends-nominal:
 - !private "So13UIAlertActionC"
 - !private "So17UIAlertControllerC"
 - !private "So21UIAppearanceContainerP"
+- !private "So7UIColorC"
 - !private "So18UIContentContainerP"
 - !private "So18UIFocusEnvironmentP"
 - !private "So30UIPasteConfigurationSupportingP"
@@ -178,6 +193,7 @@ depends-nominal:
 - !private "So18UITraitEnvironmentP"
 - !private "So23UIUserActivityRestoringP"
 - !private "So16UIViewControllerC"
+- !private "s26_ExpressibleByColorLiteralP"
 - !private "10Foundation27_KeyValueCodingAndObservingP"
 depends-dynamic-lookup:
 depends-external:
@@ -193,8 +209,8 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/SwiftOnoneSupport.swiftmodule"
-- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/TRPUIKit/TRPUIKit.h"
-- "/Users/rozeridilar/Desktop/Tripian/IOS Sdks/TRPUIKit/build/TRPUIKit.build/Debug-iphoneos/TRPUIKit.build/unextended-module.modulemap"
+- "/Users/evrenyasar/Xcode/TRPUIKit/TRPUIKit/TRPUIKit.h"
+- "/Users/evrenyasar/Xcode/TRPUIKit/build/TRPUIKit.build/Debug-iphoneos/TRPUIKit.build/unextended-module.modulemap"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"

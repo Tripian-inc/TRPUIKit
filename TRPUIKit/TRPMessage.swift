@@ -60,7 +60,7 @@ public class TRPMessage {
          type: MessageType,
          position: Position = .top,
          autoClose: Bool = true,
-         closeTime: TimeInterval = 2,
+         closeTime: TimeInterval = 2.5,
          height: CGFloat = 50.0,
          topForIphoneX: Bool = false) {
         self.topForIphoneX = topForIphoneX
@@ -77,7 +77,7 @@ public class TRPMessage {
                 type: MessageType,
                 nagivationController: UINavigationController?,
                 autoClose: Bool = true,
-                closeTime: TimeInterval = 2,
+                closeTime: TimeInterval = 2.5,
                 height: CGFloat = 50.0,
                 inView: UIView,
                 topForIphoneX: Bool = false) {
