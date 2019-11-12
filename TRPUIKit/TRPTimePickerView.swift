@@ -30,7 +30,7 @@ public class TRPTimePickerView: UIPickerView {
     private var timeType: TimeFieldType?
     
     public static let lastStartHour = "23:00"
-    public static let lastEndHour = "23:45"
+    public static let lastEndHour = "23:59"
     
     //MARK: - Delegate
     public var timePickerDelegate:TRPTimePickerViewProtocol?
@@ -55,6 +55,7 @@ public class TRPTimePickerView: UIPickerView {
     
     //MARK: - Private Functions
     private func commonInit() {
+        self.backgroundColor = UIColor.white
         if(hours.count > 23){
             tmpHours = hours
         }
@@ -64,9 +65,6 @@ public class TRPTimePickerView: UIPickerView {
     @objc func applyButtonOfTimePressed() {
         timePickerDelegate?.toolBarButtonPressed(selectedHour: selectedHour, timeType: timeType)
     }
-    
-    
-    
 }
 
 //MARK: - Delegate & DataSource functions
@@ -96,7 +94,7 @@ extension TRPTimePickerView{
          hours = tmpHours
         }
         if(minVal == 23){
-            hours = ["23:45"]
+            hours = ["23:59"]
         }else{
             hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: 0, upper: minVal)))
         }
@@ -134,7 +132,7 @@ extension TRPTimePickerView{
     public func getToolBar(with buttonTitle: String, _ buttonTintColor: UIColor? = nil) -> UIToolbar{
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let applyTitle = buttonTitle
-        let applyButton = UIBarButtonItem(title: applyTitle, style: UIBarButtonItem.Style.done, target: self, action: #selector(applyButtonOfTimePressed))
+        let applyButton = UIBarButtonItem(title: applyTitle, style: UIBarButtonItem.Style.plain, target: self, action: #selector(applyButtonOfTimePressed))
         if let color = buttonTintColor{
             applyButton.tintColor = color
         }else{
