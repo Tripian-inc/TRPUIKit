@@ -24,6 +24,7 @@
 /* Begin PBXBuildFile section */
 		18778D10237C235800D851AC /* TRPUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778D0F237C235800D851AC /* TRPUIKitTests.swift */; };
 		18778D12237C235900D851AC /* TRPUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2431320215ED3F0005DB0E6 /* TRPUIKit.framework */; };
+		18778D19237C23F200D851AC /* TRPSearcAreaButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778D18237C23F200D851AC /* TRPSearcAreaButtonTest.swift */; };
 		18D08964237ACD1C004947EC /* TRPTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D08963237ACD1C004947EC /* TRPTimePickerView.swift */; };
 		18F13AD0237ADC5800EE8598 /* TimeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F13ACF237ADC5700EE8598 /* TimeAlert.swift */; };
 		B2125FDB21CBDF440001CD53 /* TRPMapTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */; };
@@ -70,6 +71,7 @@
 		18778D0D237C235800D851AC /* TRPUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TRPUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18778D0F237C235800D851AC /* TRPUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPUIKitTests.swift; sourceTree = "<group>"; };
 		18778D11237C235800D851AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18778D18237C23F200D851AC /* TRPSearcAreaButtonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPSearcAreaButtonTest.swift; sourceTree = "<group>"; };
 		18D08963237ACD1C004947EC /* TRPTimePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TRPTimePickerView.swift; sourceTree = "<group>"; };
 		18F13ACF237ADC5700EE8598 /* TimeAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAlert.swift; sourceTree = "<group>"; };
 		B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPMapTopBar.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				18778D0F237C235800D851AC /* TRPUIKitTests.swift */,
 				18778D11237C235800D851AC /* Info.plist */,
+				18778D18237C23F200D851AC /* TRPSearcAreaButtonTest.swift */,
 			);
 			path = TRPUIKitTests;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18778D19237C23F200D851AC /* TRPSearcAreaButtonTest.swift in Sources */,
 				18778D10237C235800D851AC /* TRPUIKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
