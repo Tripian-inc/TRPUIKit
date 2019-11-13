@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		18D08964237ACD1C004947EC /* TRPTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D08963237ACD1C004947EC /* TRPTimePickerView.swift */; };
+		18F13AD0237ADC5800EE8598 /* TimeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F13ACF237ADC5700EE8598 /* TimeAlert.swift */; };
 		B2125FDB21CBDF440001CD53 /* TRPMapTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */; };
 		B2341D60231438DB007EAF80 /* UIKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2341D5F231438DB007EAF80 /* UIKitInfo.swift */; };
 		B2431325215ED3F0005DB0E6 /* TRPUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2431323215ED3F0005DB0E6 /* TRPUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18D08963237ACD1C004947EC /* TRPTimePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TRPTimePickerView.swift; sourceTree = "<group>"; };
+		18F13ACF237ADC5700EE8598 /* TimeAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAlert.swift; sourceTree = "<group>"; };
 		B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPMapTopBar.swift; sourceTree = "<group>"; };
 		B2341D5F231438DB007EAF80 /* UIKitInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitInfo.swift; sourceTree = "<group>"; };
 		B2431320215ED3F0005DB0E6 /* TRPUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TRPUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,12 +123,14 @@
 		B2431322215ED3F0005DB0E6 /* TRPUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				18D08963237ACD1C004947EC /* TRPTimePickerView.swift */,
 				B2B4436D2161D17500371938 /* TRPCallOutController */,
 				B243132B215ED444005DB0E6 /* TRPMomentum */,
 				B243132E215ED469005DB0E6 /* TRPCircleMenu */,
 				B2431335215ED4F6005DB0E6 /* TRPLoader */,
 				B243133C215ED54A005DB0E6 /* Star */,
 				B2431323215ED3F0005DB0E6 /* TRPUIKit.h */,
+				18F13ACF237ADC5700EE8598 /* TimeAlert.swift */,
 				B2431324215ED3F0005DB0E6 /* Info.plist */,
 				B243133F215ED575005DB0E6 /* TRPColor.swift */,
 				B2431341215ED58C005DB0E6 /* TRPCirleButton.swift */,
@@ -298,9 +304,11 @@
 				B2431332215ED49C005DB0E6 /* TRPCirleMenuDelegate.swift in Sources */,
 				B2431340215ED575005DB0E6 /* TRPColor.swift in Sources */,
 				B2431334215ED4B0005DB0E6 /* TRPCirleButtonPropety.swift in Sources */,
+				18D08964237ACD1C004947EC /* TRPTimePickerView.swift in Sources */,
 				B243134E215ED61C005DB0E6 /* TRPTopBar.swift in Sources */,
 				B2431330215ED47E005DB0E6 /* TRPCircleMenu.swift in Sources */,
 				B2125FDB21CBDF440001CD53 /* TRPMapTopBar.swift in Sources */,
+				18F13AD0237ADC5800EE8598 /* TimeAlert.swift in Sources */,
 				B2431348215ED5CF005DB0E6 /* TRPAddPlaceFilterVC.swift in Sources */,
 				B243133B215ED531005DB0E6 /* Loader.swift in Sources */,
 				B243134C215ED602005DB0E6 /* TRPGradientView.swift in Sources */,
