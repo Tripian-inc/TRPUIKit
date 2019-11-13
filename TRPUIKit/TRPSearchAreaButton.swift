@@ -68,8 +68,6 @@ public class TRPSearchAreaButton: UIButton {
     private func commonInit() {
         backgroundColor = UIColor.red
         layer.cornerRadius = cornerRadius
-        alpha = 0
-        transform = CGAffineTransform(scaleX: 0, y: 0)
         setTitle(title ?? "", for: UIControl.State.normal)
         setTitleColor(titleColor, for: UIControl.State.normal)
         titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
@@ -77,54 +75,23 @@ public class TRPSearchAreaButton: UIButton {
         layer.shadowRadius = shadowRadius
         layer.shadowOpacity = shadowOpacity
         layer.shadowOffset = shadownOffset
-        //self.alpha = 0
-        //self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        hidden()
     }
     
     
     public func show() {
-        if isAnimating == true || isOpen == true {return}
-        isAnimating = true
-        
-        self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        animator = UIViewPropertyAnimator(duration: 0.1, curve: UIView.AnimationCurve.easeOut, animations: {
-            self.alpha = 1
-            self.transform = CGAffineTransform.identity
-        })
-        animator.addCompletion { _ in
-            self.alpha = 1
-            self.transform = CGAffineTransform.identity
-            self.isAnimating = false
-            self.isOpen = true
-        }
-        animator.startAnimation()
+        isHidden = false
     }
     
     public func hidden() {
-        if isAnimating == true {return}
-        isAnimating = true
-        animator = UIViewPropertyAnimator(duration: 0.1, curve: UIView.AnimationCurve.easeOut, animations: {
-            self.alpha = 0
-            self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        })
-        animator.addCompletion { _ in
-            self.alpha = 0
-            self.transform = CGAffineTransform(scaleX: 0, y: 0)
-            self.isAnimating = false
-            self.isOpen = false
-        }
-        animator.startAnimation()
+        isHidden = true
     }
     
     public func zoomLevel(_ level: Double) {
         if level > zoomLevelTrashHold {
-            if isOpen == false {
-                show()
-            }
+            show()
         }else {
-            if isOpen == true {
-                hidden()
-            }
+            hidden()
         }
     }
     
