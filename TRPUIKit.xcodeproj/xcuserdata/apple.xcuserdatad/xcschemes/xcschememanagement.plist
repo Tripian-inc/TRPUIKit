@@ -8,6 +8,14 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+<<<<<<< HEAD
+=======
+		</dict>
+		<key>TRPUIKitTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+>>>>>>> 839a904447172acb9206aa39c2e684896c64889a
 		</dict>
 		<key>UniversalTRPUIKit.xcscheme_^#shared#^_</key>
 		<dict>
