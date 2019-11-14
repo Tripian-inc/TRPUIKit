@@ -220,8 +220,8 @@ extension TimeAlert: UITextFieldDelegate{
             guard let endHour = endTimeField.text, endHour.count != 0 else {
                 return
             }
-            startTimePicker.setDefaultVal(with: TimeConstants.startTime)
             startTimePicker.setMaxVal(in: endHour)
+            startTimePicker.setDefaultVal(with: TimeConstants.startTime)
         case endTimeField:
             guard let startHour = startTimeField.text, startHour.count != 0 else {
                 startTimeField.text = TimeConstants.startTime

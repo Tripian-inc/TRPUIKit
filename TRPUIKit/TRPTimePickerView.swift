@@ -113,7 +113,7 @@ extension TRPTimePickerView{
     }
     
     public func setMinVal(in minVal: Int) {
-        if(hours.count < 23){
+        if(hours.count != tmpHours.count){
             hours = tmpHours
         }
         if(minVal == 23){
@@ -136,6 +136,9 @@ extension TRPTimePickerView{
     }
     
     public func setDefaultVal(with defaultVal: Int) {
+        guard defaultVal < hours.count else{
+            return
+        }
         defaultHour = hours[defaultVal]
         self.selectRow(defaultVal, inComponent: 0, animated: false)
     }
