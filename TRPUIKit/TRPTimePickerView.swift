@@ -16,8 +16,8 @@ public protocol TRPTimePickerViewProtocol {
 }
 
 public enum TimeFieldType: Int{
-     case start,end
- }
+    case start,end
+}
 
 public class TRPTimePickerView: UIPickerView {
     
@@ -89,9 +89,32 @@ extension TRPTimePickerView: UIPickerViewDataSource, UIPickerViewDelegate{
 
 //MARK: - Calculation functions
 extension TRPTimePickerView{
+    
+    public func setMaxVal(in maxVal: Int) {
+        if(hours.count != tmpHours.count){
+            hours = tmpHours
+        }
+        
+        if(maxVal < hours.count){
+            hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: maxVal, upper: 23)))
+            reloadAllComponents()
+        }
+    }
+    
+    public func setMaxVal(in maxVal: String) {
+        if maxVal.count != 0, maxVal.contains(":"){
+            let newTime = maxVal.components(separatedBy: ":")
+            if newTime.count == 2 {
+                if let hour = Int(newTime[0]){
+                    setMaxVal(in: hour)
+                }
+            }
+        }
+    }
+    
     public func setMinVal(in minVal: Int) {
         if(hours.count < 23){
-         hours = tmpHours
+            hours = tmpHours
         }
         if(minVal == 23){
             hours = ["23:59"]
@@ -106,7 +129,7 @@ extension TRPTimePickerView{
             let newTime = minVal.components(separatedBy: ":")
             if newTime.count == 2 {
                 if let hour = Int(newTime[0]){
-                      setMinVal(in: hour)
+                    setMinVal(in: hour)
                 }
             }
         }

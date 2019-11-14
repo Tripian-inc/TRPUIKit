@@ -217,8 +217,11 @@ extension TimeAlert: UITextFieldDelegate{
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case startTimeField:
-            print("TextField did begin editing method called")
-            
+            guard let endHour = endTimeField.text, endHour.count != 0 else {
+                return
+            }
+            startTimePicker.setDefaultVal(with: TimeConstants.startTime)
+            startTimePicker.setMaxVal(in: endHour)
         case endTimeField:
             guard let startHour = startTimeField.text, startHour.count != 0 else {
                 startTimeField.text = TimeConstants.startTime
@@ -230,7 +233,6 @@ extension TimeAlert: UITextFieldDelegate{
             }
             endTimePicker.setMinVal(in: startHour)
             endTimePicker.setDefaultVal(with: TimeConstants.endTime)
-            
         default:
             return
         }
