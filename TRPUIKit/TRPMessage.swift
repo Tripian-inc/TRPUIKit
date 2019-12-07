@@ -115,7 +115,12 @@ public class TRPMessage {
     }
     
     private func calculateHeight(_ heigt: CGFloat) -> CGFloat {
-        if topForIphoneX && hasTopNotch {
+        if #available(iOS 11.0, *) {
+            print("KKKKKK \(UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 1)")
+        } else {
+            // Fallback on earlier versions
+        }
+        if topForIphoneX && hasTopNotch{
             return heigt + 24
         }
         return heigt
@@ -123,7 +128,8 @@ public class TRPMessage {
     
     var hasTopNotch: Bool {
         if #available(iOS 11.0,  *) {
-            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
+            let topSpace = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+            return topSpace > 20
         }
         
         return false
