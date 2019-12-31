@@ -331,6 +331,8 @@ SWIFT_CLASS("_TtC8TRPUIKit9TimeAlert")
 
 
 
+
+
 SWIFT_CLASS("_TtC8TRPUIKit9UIKitInfo")
 @interface UIKitInfo : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -669,6 +671,8 @@ SWIFT_CLASS("_TtC8TRPUIKit9TimeAlert")
 @interface TimeAlert (SWIFT_EXTENSION(TRPUIKit)) <UITextFieldDelegate>
 - (void)textFieldDidBeginEditing:(UITextField * _Nonnull)textField;
 @end
+
+
 
 
 
