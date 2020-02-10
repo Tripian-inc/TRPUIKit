@@ -4,7 +4,7 @@
 //
 //  Created by Evren Yaşar on 28.09.2018.
 //  Copyright © 2018 Evren Yaşar. All rights reserved.
-//
+//`
 
 import Foundation
 import UIKit
@@ -25,18 +25,19 @@ open class TRPCircleMenu: UIButton {
     private var selectedImageView: UIImageView?
     private var isNormal: Bool = true
     private var containerView: UIView?
+    private var darkOverlayView: UIView?
     private var subButtonsPosition: Position = .left
-    public var subButtonSpace: CGFloat = 25
+    public var subButtonSpace: CGFloat = 35
+    private var circleR: CGFloat = 50
     
     private var currentStatus: CurrentState = .close {
         didSet {
             delegate?.circleMenu(self, changedState: currentStatus)
         }
     }
-    private var isAnimating = false
-    private var cirleR: CGFloat = 40
-    public weak var delegate: TRPCirleMenuDelegate?
     
+    private var isAnimating = false
+    public weak var delegate: TRPCirleMenuDelegate?
     
     public init(frame: CGRect,
                 normalIcon: UIImage?,
@@ -81,6 +82,7 @@ open class TRPCircleMenu: UIButton {
     
     open override func layoutSubviews() {
         if containerView == nil {
+            createDarkOverlayView()
             createContainerView()
             containerView!.alpha = 0
             containerView!.isHidden = true
@@ -88,16 +90,22 @@ open class TRPCircleMenu: UIButton {
     }
     
     @objc func onPressed() {
-        if isAnimating == true {return}
-        tapRotatedAnimation(0.4, isSelected: !self.isSelected)
-        if createdSubButtons.count == 0 {
-            createSubButtons(subButtons)
+        animateCircleView()
+    }
+    
+    private func animateCircleView(){
+        DispatchQueue.main.async {
+            if self.isAnimating == true {return}
+            self.tapRotatedAnimation(0.4, isSelected: !self.isSelected)
+            if self.createdSubButtons.count == 0 {
+                self.createSubButtons(self.subButtons)
+            }
+            if self.isSelected {
+                self.containerView!.alpha = 1
+                self.containerView!.isHidden = false
+            }
+            self.addAnimation()
         }
-        if isSelected {
-            containerView!.alpha = 1
-            self.containerView!.isHidden = false
-        }
-        addAnimation()
     }
     
     private func setCenter(imageView: UIImageView) {
@@ -168,42 +176,110 @@ extension TRPCircleMenu {
     
     fileprivate func createContainerView() {
         containerView = UIView(frame: CGRect.zero)
-        superview?.insertSubview(containerView!, belowSubview: self)
-        containerView!.translatesAutoresizingMaskIntoConstraints = false
+        guard let containerView = containerView else {return}
+        superview?.insertSubview(containerView, belowSubview: self)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
         
-        var width: CGFloat = 200
+        var width: CGFloat = 240
+        if UIScreen.main.bounds.width < 325.0{//Iphone 5 ve diger kucukleri icin
+            width = 200
+            subButtonSpace = 17
+            circleR = 40
+        }
         var height: CGFloat = 100
         
         switch subButtonsPosition {
         case .left:
             width = CGFloat(subButtons.count) * CGFloat(40 + subButtonSpace)
             height = frame.height
-            containerView!.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-            containerView!.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            containerView.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+            containerView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
             break
         case .right:
             width = CGFloat(subButtons.count) * CGFloat(40 + subButtonSpace)
             height = frame.height
-            containerView!.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-            containerView!.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            containerView.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+            containerView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
             break
         case .top:
             height = CGFloat(subButtons.count) * CGFloat(40 + subButtonSpace)
             width = frame.height
-            containerView!.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-            containerView!.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            containerView.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+            containerView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
             break
         case .bottom:
             height = CGFloat(subButtons.count) * CGFloat(40 + subButtonSpace)
             width = frame.height
-            containerView!.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-            containerView!.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            containerView.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+            containerView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
             break
         }
-        containerView!.widthAnchor.constraint(equalToConstant: width).isActive = true
-        containerView!.heightAnchor.constraint(equalToConstant: height).isActive = true
+        containerView.widthAnchor.constraint(equalToConstant: width + 40).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        //superview?.bringSubviewToFront(containerView)
+        darkOverlayView?.bringSubviewToFront(containerView)
+    }
+}
+
+// MARK: - Dark Overlay view
+extension TRPCircleMenu {
+    private func createDarkOverlayView() {
+        darkOverlayView = UIView(frame: CGRect.zero)
+        guard let darkOverlayView = darkOverlayView else {return}
+        superview?.insertSubview(darkOverlayView, belowSubview: self)
+        //superview?.sendSubviewToBack(darkOverlayView)
+        darkOverlayView.translatesAutoresizingMaskIntoConstraints = false
+        //darkOverlayView.isUserInteractionEnabled = false
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(darkOverlayPressed))
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(darkOverlayPressed))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(darkOverlayPressed))
+        darkOverlayView.addGestureRecognizer(pan)
+        darkOverlayView.addGestureRecognizer(swipe)
+        darkOverlayView.addGestureRecognizer(tap)
+        tap.require(toFail: swipe)
+        swipe.require(toFail: pan)
+        darkOverlayView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        darkOverlayView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
     }
     
+    private func updateOverlayView(){
+        if self.currentStatus == .close {
+            self.showDarkOverlayView()
+        }else {
+            self.hideDarkOverlayView()
+        }
+    }
+    
+    private func showDarkOverlayView(){
+        guard let darkOverlayView = darkOverlayView else {return}
+        //Burada emulatorde sorun yaratiyor ona bak
+        //        superview?.bringSubviewToFront(darkOverlayView)
+        //        superview?.bringSubviewToFront(containerView)
+        //        superview?.bringSubviewToFront(self)
+        //        containerView.sendSubviewToBack(darkOverlayView)
+        //        superview?.insertSubview(darkOverlayView, belowSubview: self)
+        //        darkOverlayView.bringSubviewToFront(containerView)
+        darkOverlayView.layer.backgroundColor = UIColor.black.cgColor
+        darkOverlayView.layer.opacity = 0.6
+        darkOverlayView.isUserInteractionEnabled = true
+    }
+    
+    private func hideDarkOverlayView(){
+        guard let darkOverlayView = darkOverlayView else {return}
+        darkOverlayView.layer.backgroundColor = UIColor.clear.cgColor
+        darkOverlayView.layer.opacity = 0
+        darkOverlayView.isUserInteractionEnabled = false
+    }
+    
+    //MARK: - Dark Overlay Objc Funcs
+    @objc func darkOverlayPressed() {
+        if currentStatus == .open{
+            animateCircleView()
+        }
+        else{
+            hideDarkOverlayView()
+        }
+    }
 }
 
 // MARK: SubButtons
@@ -211,13 +287,17 @@ extension TRPCircleMenu {
     
     fileprivate func createSubButtons(_ buttons: [TRPCirleButtonPropety]) {
         guard let containerView = containerView else {return}
-        
+        if UIScreen.main.bounds.width < 325.0{//Iphone 5 ve digerleri
+            subButtonSpace = 17
+            circleR = 40
+        }
         for i in 0..<buttons.count {
             //let startX: CGFloat = (containerView.frame.width - cirleR - subButtonSpace) - ((cirleR + subButtonSpace) * CGFloat(i))
-            let startX: CGFloat = self.containerView!.frame.width - 40 - subButtonSpace
-            let startY: CGFloat = (containerView.frame.height - cirleR) / 2
+            let dist = subButtonSpace == 17 ? subButtonSpace : subButtonSpace + 30
+            let startX: CGFloat = self.containerView!.frame.width - dist
+            let startY: CGFloat = (containerView.frame.height - circleR) / 2
             if let image = buttons[i].image {
-                let btn = TRPCirleButton(frame: CGRect(x: startX, y:startY, width: cirleR, height: cirleR),
+                let btn = TRPCirleButton(frame: CGRect(x: startX, y:startY, width: circleR, height: circleR),
                                          normalImage:image,
                                          titleName: buttons[i].name)
                 btn.alpha = 0
@@ -227,7 +307,6 @@ extension TRPCircleMenu {
                 createdSubButtons.append(btn)
             }
         }
-        
     }
     
     @objc func subButtonPressed(_ sender: UIButton) {
@@ -236,36 +315,39 @@ extension TRPCircleMenu {
     
 }
 
-
-
 extension TRPCircleMenu {
     func addAnimation() {
-        isAnimating = true
-        animator.addAnimations {
-            if self.currentStatus == .close {
-                for i in 0..<self.createdSubButtons.count {
-                    let position = (self.containerView!.frame.width - 40 - self.subButtonSpace) - ((40 + self.subButtonSpace) * CGFloat(i))
-                    self.createdSubButtons[i].transform = CGAffineTransform(translationX: -position, y: 0)
-                    self.createdSubButtons[i].alpha = 1
-                }
-            }else {
-                for i in 0..<self.subButtons.count {
-                    self.createdSubButtons[i].transform = CGAffineTransform.identity
-                    self.createdSubButtons[i].alpha = 0
+        DispatchQueue.main.async {
+            self.isAnimating = true
+            self.animator.addAnimations { [weak self] in
+                guard let strongSelf = self else {return}
+                strongSelf.updateOverlayView()
+                if strongSelf.currentStatus == .close {
+                    for i in 0..<strongSelf.createdSubButtons.count {
+                        let position = (strongSelf.containerView!.frame.width - strongSelf.circleR - strongSelf.subButtonSpace) - ((strongSelf.circleR + strongSelf.subButtonSpace) * CGFloat(i))
+                        strongSelf.createdSubButtons[i].transform = CGAffineTransform(translationX: -position, y: 0)
+                        strongSelf.createdSubButtons[i].alpha = 1
+                    }
+                }else {
+                    for i in 0..<strongSelf.subButtons.count {
+                        strongSelf.createdSubButtons[i].transform = CGAffineTransform.identity
+                        strongSelf.createdSubButtons[i].alpha = 0
+                    }
                 }
             }
-        }
-        animator.addCompletion { _ in
-            if self.currentStatus == .close {
-                self.currentStatus = .open
-            }else {
-                self.currentStatus = .close
-                self.containerView!.alpha = 0
-                self.containerView!.isHidden = true
+            self.animator.addCompletion { _ in
+                self.updateOverlayView()
+                if self.currentStatus == .close {
+                    self.currentStatus = .open
+                }else {
+                    self.currentStatus = .close
+                    self.containerView!.alpha = 0
+                    self.containerView!.isHidden = true
+                }
+                self.isAnimating = false
             }
-            self.isAnimating = false
+            self.animator.startAnimation()
         }
-        animator.startAnimation()
     }
 }
 

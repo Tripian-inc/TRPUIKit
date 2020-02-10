@@ -22,7 +22,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		18778D10237C235800D851AC /* TRPUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778D0F237C235800D851AC /* TRPUIKitTests.swift */; };
+		18778D12237C235900D851AC /* TRPUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2431320215ED3F0005DB0E6 /* TRPUIKit.framework */; };
+		18778D19237C23F200D851AC /* TRPSearcAreaButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778D18237C23F200D851AC /* TRPSearcAreaButtonTest.swift */; };
+		18D08964237ACD1C004947EC /* TRPTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D08963237ACD1C004947EC /* TRPTimePickerView.swift */; };
+		18F13AD0237ADC5800EE8598 /* TimeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F13ACF237ADC5700EE8598 /* TimeAlert.swift */; };
 		B2125FDB21CBDF440001CD53 /* TRPMapTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */; };
+		B2341D60231438DB007EAF80 /* UIKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2341D5F231438DB007EAF80 /* UIKitInfo.swift */; };
 		B2431325215ED3F0005DB0E6 /* TRPUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2431323215ED3F0005DB0E6 /* TRPUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B243132D215ED457005DB0E6 /* MovementList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B243132C215ED457005DB0E6 /* MovementList.swift */; };
 		B2431330215ED47E005DB0E6 /* TRPCircleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B243132F215ED47E005DB0E6 /* TRPCircleMenu.swift */; };
@@ -45,6 +51,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		18778D13237C235900D851AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2431317215ED3EF005DB0E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B243131F215ED3F0005DB0E6;
+			remoteInfo = TRPUIKit;
+		};
 		B22C8F982231793500D18633 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2431317215ED3EF005DB0E6 /* Project object */;
@@ -55,7 +68,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18778D0D237C235800D851AC /* TRPUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TRPUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18778D0F237C235800D851AC /* TRPUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPUIKitTests.swift; sourceTree = "<group>"; };
+		18778D11237C235800D851AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18778D18237C23F200D851AC /* TRPSearcAreaButtonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPSearcAreaButtonTest.swift; sourceTree = "<group>"; };
+		18D08963237ACD1C004947EC /* TRPTimePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TRPTimePickerView.swift; sourceTree = "<group>"; };
+		18F13ACF237ADC5700EE8598 /* TimeAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAlert.swift; sourceTree = "<group>"; };
 		B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPMapTopBar.swift; sourceTree = "<group>"; };
+		B2341D5F231438DB007EAF80 /* UIKitInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitInfo.swift; sourceTree = "<group>"; };
 		B2431320215ED3F0005DB0E6 /* TRPUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TRPUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2431323215ED3F0005DB0E6 /* TRPUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRPUIKit.h; sourceTree = "<group>"; };
 		B2431324215ED3F0005DB0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +100,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		18778D0A237C235800D851AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18778D12237C235900D851AC /* TRPUIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B243131C215ED3F0005DB0E6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,6 +118,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18778D0E237C235800D851AC /* TRPUIKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				18778D0F237C235800D851AC /* TRPUIKitTests.swift */,
+				18778D11237C235800D851AC /* Info.plist */,
+				18778D18237C23F200D851AC /* TRPSearcAreaButtonTest.swift */,
+			);
+			path = TRPUIKitTests;
+			sourceTree = "<group>";
+		};
 		B20ECC6421898347003C7F15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				B2431322215ED3F0005DB0E6 /* TRPUIKit */,
+				18778D0E237C235800D851AC /* TRPUIKitTests */,
 				B2431321215ED3F0005DB0E6 /* Products */,
 				B20ECC6421898347003C7F15 /* Frameworks */,
 			);
@@ -110,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				B2431320215ED3F0005DB0E6 /* TRPUIKit.framework */,
+				18778D0D237C235800D851AC /* TRPUIKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,12 +157,14 @@
 		B2431322215ED3F0005DB0E6 /* TRPUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				18D08963237ACD1C004947EC /* TRPTimePickerView.swift */,
 				B2B4436D2161D17500371938 /* TRPCallOutController */,
 				B243132B215ED444005DB0E6 /* TRPMomentum */,
 				B243132E215ED469005DB0E6 /* TRPCircleMenu */,
 				B2431335215ED4F6005DB0E6 /* TRPLoader */,
 				B243133C215ED54A005DB0E6 /* Star */,
 				B2431323215ED3F0005DB0E6 /* TRPUIKit.h */,
+				18F13ACF237ADC5700EE8598 /* TimeAlert.swift */,
 				B2431324215ED3F0005DB0E6 /* Info.plist */,
 				B243133F215ED575005DB0E6 /* TRPColor.swift */,
 				B2431341215ED58C005DB0E6 /* TRPCirleButton.swift */,
@@ -133,6 +175,7 @@
 				B243134D215ED61C005DB0E6 /* TRPTopBar.swift */,
 				B243134F215ED635005DB0E6 /* TRPUIKit.swift */,
 				B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */,
+				B2341D5F231438DB007EAF80 /* UIKitInfo.swift */,
 			);
 			path = TRPUIKit;
 			sourceTree = "<group>";
@@ -196,6 +239,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		18778D0C237C235800D851AC /* TRPUIKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18778D17237C235900D851AC /* Build configuration list for PBXNativeTarget "TRPUIKitTests" */;
+			buildPhases = (
+				18778D09237C235800D851AC /* Sources */,
+				18778D0A237C235800D851AC /* Frameworks */,
+				18778D0B237C235800D851AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18778D14237C235900D851AC /* PBXTargetDependency */,
+			);
+			name = TRPUIKitTests;
+			productName = TRPUIKitTests;
+			productReference = 18778D0D237C235800D851AC /* TRPUIKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B243131F215ED3F0005DB0E6 /* TRPUIKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2431328215ED3F0005DB0E6 /* Build configuration list for PBXNativeTarget "TRPUIKit" */;
@@ -221,9 +282,13 @@
 			isa = PBXProject;
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Original;
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Evren Yaşar";
 				TargetAttributes = {
+					18778D0C237C235800D851AC = {
+						CreatedOnToolsVersion = 11.1;
+					};
 					B22C8F852231786100D18633 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -247,11 +312,19 @@
 			targets = (
 				B243131F215ED3F0005DB0E6 /* TRPUIKit */,
 				B22C8F852231786100D18633 /* UniversalTRPUIKit */,
+				18778D0C237C235800D851AC /* TRPUIKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		18778D0B237C235800D851AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B243131E215ED3F0005DB0E6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -282,10 +355,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		18778D09237C235800D851AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18778D19237C23F200D851AC /* TRPSearcAreaButtonTest.swift in Sources */,
+				18778D10237C235800D851AC /* TRPUIKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B243131B215ED3F0005DB0E6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2341D60231438DB007EAF80 /* UIKitInfo.swift in Sources */,
 				B2431342215ED58C005DB0E6 /* TRPCirleButton.swift in Sources */,
 				B2431344215ED5A3005DB0E6 /* TRPSearchAreaButton.swift in Sources */,
 				B243133E215ED55B005DB0E6 /* TRPStar.swift in Sources */,
@@ -294,9 +377,11 @@
 				B2431332215ED49C005DB0E6 /* TRPCirleMenuDelegate.swift in Sources */,
 				B2431340215ED575005DB0E6 /* TRPColor.swift in Sources */,
 				B2431334215ED4B0005DB0E6 /* TRPCirleButtonPropety.swift in Sources */,
+				18D08964237ACD1C004947EC /* TRPTimePickerView.swift in Sources */,
 				B243134E215ED61C005DB0E6 /* TRPTopBar.swift in Sources */,
 				B2431330215ED47E005DB0E6 /* TRPCircleMenu.swift in Sources */,
 				B2125FDB21CBDF440001CD53 /* TRPMapTopBar.swift in Sources */,
+				18F13AD0237ADC5800EE8598 /* TimeAlert.swift in Sources */,
 				B2431348215ED5CF005DB0E6 /* TRPAddPlaceFilterVC.swift in Sources */,
 				B243133B215ED531005DB0E6 /* Loader.swift in Sources */,
 				B243134C215ED602005DB0E6 /* TRPGradientView.swift in Sources */,
@@ -311,6 +396,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		18778D14237C235900D851AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B243131F215ED3F0005DB0E6 /* TRPUIKit */;
+			targetProxy = 18778D13237C235900D851AC /* PBXContainerItemProxy */;
+		};
 		B22C8F992231793500D18633 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B243131F215ED3F0005DB0E6 /* TRPUIKit */;
@@ -319,6 +409,47 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		18778D15237C235900D851AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FSU73FY6GX;
+				INFOPLIST_FILE = TRPUIKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripian.TRPUIKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		18778D16237C235900D851AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FSU73FY6GX;
+				INFOPLIST_FILE = TRPUIKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripian.TRPUIKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B22C8F862231786200D18633 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -463,6 +594,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -475,6 +607,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tripian.TRPUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -490,6 +623,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -502,6 +636,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tripian.TRPUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -513,6 +648,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		18778D17237C235900D851AC /* Build configuration list for PBXNativeTarget "TRPUIKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18778D15237C235900D851AC /* Debug */,
+				18778D16237C235900D851AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B22C8F882231786200D18633 /* Build configuration list for PBXAggregateTarget "UniversalTRPUIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

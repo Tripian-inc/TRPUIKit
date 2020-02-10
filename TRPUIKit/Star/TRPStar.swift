@@ -26,7 +26,9 @@ public class TRPStar: UIView {
     }
     
     public func setRating(_ count: Int) {
+        
         for i in 0...4 {
+            //Fixme: - ac bu kodu
             if i < count {
                 shapes[i].fillColor = fillColor.cgColor
             }else {

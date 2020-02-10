@@ -19,7 +19,7 @@ public class TRPAddPlaceFilterVC {
     public var title:String? = nil
     public var message:String? = nil
     public var recommendataionText = "Recommendation"
-    public var nearByText = "Near By"
+    public var nearByText = "Nearby"
     
     public init(selectedButton: ButtonType, handler: ((ButtonType) -> Swift.Void)? = nil) {
         self.mHandler = handler
@@ -37,6 +37,7 @@ public class TRPAddPlaceFilterVC {
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (_) in}
+        cancel.setValue(UIColor(red: 229.0/255.0, green: 78.0/255.0, blue: 83.0/255.0, alpha: 1.0), forKey: "titleTextColor")
         
         if selectedButton == .nearBy {
             nearBy.setValue(true, forKey: "checked")

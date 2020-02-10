@@ -1,0 +1,19 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "93dcd09f6ef08fa7637f265785a9debb8c497fbc",
+  "iOS" : [
+    {
+      "name" : "TRPUIKit",
+      "hash" : "75ba46c5b416c468853d27fbee373a3d88b68424226ea1bc4d2efe8c99ef98eb",
+      "swiftToolchainVersion" : "5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
+    }
+  ]
+}

@@ -60,7 +60,7 @@ public class TRPMessage {
          type: MessageType,
          position: Position = .top,
          autoClose: Bool = true,
-         closeTime: TimeInterval = 2,
+         closeTime: TimeInterval = 2.5,
          height: CGFloat = 50.0,
          topForIphoneX: Bool = false) {
         self.topForIphoneX = topForIphoneX
@@ -77,7 +77,7 @@ public class TRPMessage {
                 type: MessageType,
                 nagivationController: UINavigationController?,
                 autoClose: Bool = true,
-                closeTime: TimeInterval = 2,
+                closeTime: TimeInterval = 2.5,
                 height: CGFloat = 50.0,
                 inView: UIView,
                 topForIphoneX: Bool = false) {
@@ -114,18 +114,33 @@ public class TRPMessage {
         commonInit()
     }
     
-    private func calculateHeight(_ heigt: CGFloat) -> CGFloat {
-        if topForIphoneX && hasTopNotch {
-            return heigt + 24
+    private func calculateHeight(_ height: CGFloat) -> CGFloat {
+        
+        var isViewAtTop = true
+        if let topController = UIApplication.topViewController() {
+                 if #available(iOS 11.0, *) {
+                     let topConstraint = topController.view.safeAreaInsets.top
+                     if topConstraint == 88{
+                         //check if device is inside navbar on iphone x+ devices.
+                         isViewAtTop = false
+                     }
+                 } else {
+                     // Fallback on earlier versions
+                 }
+             }
+        
+        if isViewAtTop && hasTopNotch{
+            return height + 24
         }
-        return heigt
+        return height
     }
     
-    var hasTopNotch: Bool {
-        if #available(iOS 11.0,  *) {
-            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
+     var hasTopNotch: Bool {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+            // with notch: 44.0 on iPhone X, XS, XS Max, XR.
+            // without notch: 24.0 on iPad Pro 12.9" 3rd generation, 20.0 on iPhone 8 on iOS 12+.
+            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 24
         }
-        
         return false
     }
     
@@ -141,6 +156,7 @@ public class TRPMessage {
         textLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8).isActive = true
         textLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8).isActive = true
         textLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8).isActive = true
+       
         containerView.transform = CGAffineTransform(translationX: 0, y: -height)
         containerView.alpha = 0.0
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewPressed))
@@ -202,5 +218,21 @@ public class TRPMessage {
     
     @objc func viewPressed() {
         onPressed?(self)
+    }
+}
+extension UIApplication {
+    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
     }
 }
