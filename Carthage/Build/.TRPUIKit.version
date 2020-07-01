@@ -8,12 +8,12 @@
   "tvOS" : [
 
   ],
-  "commitish" : "93dcd09f6ef08fa7637f265785a9debb8c497fbc",
+  "commitish" : "55b80cfdc2ee269ea143663a12f89c1d116904a0",
   "iOS" : [
     {
       "name" : "TRPUIKit",
-      "hash" : "75ba46c5b416c468853d27fbee373a3d88b68424226ea1bc4d2efe8c99ef98eb",
-      "swiftToolchainVersion" : "5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
+      "hash" : "8fe4628b0788ad39b765f5df24bfb19831672782e9b842967a9d0d19f7e80928",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
     }
   ]
 }

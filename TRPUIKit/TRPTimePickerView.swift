@@ -155,6 +155,10 @@ extension TRPTimePickerView{
         return defaultHour
     }
     
+    public func getSelectedHour() -> String? {
+        return selectedHour
+    }
+    
     public func getToolBar(with buttonTitle: String, _ buttonTintColor: UIColor? = nil) -> UIToolbar{
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let applyTitle = buttonTitle
@@ -165,6 +169,7 @@ extension TRPTimePickerView{
             applyButton.tintColor = TRPColor.pink
         }
         timeToolBar.items = [spaceButton,applyButton]
+        timeToolBar.updateConstraintsIfNeeded()
         return timeToolBar
     }
     
