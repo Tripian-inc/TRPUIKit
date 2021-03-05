@@ -9,12 +9,16 @@
 import UIKit
 public class TRPLoaderVC: UIViewController {
     
-    init() {
+    var loader: TRPLoaderView?
+    
+    public init() {
         super.init(nibName: nil, bundle: nil)
         self.view.frame = UIScreen.main.bounds
         self.view.autoresizingMask = [UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleWidth]
-        self.view.backgroundColor = UIColor(red:0, green:0, blue:0, alpha:0.1)
-        //self.view.addSubview(contentView)
+    }
+    
+    public override func viewDidLoad() {
+        view.backgroundColor = .clear
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -26,10 +30,14 @@ public class TRPLoaderVC: UIViewController {
         window.addSubview(view)
         window.bringSubviewToFront(view)
         view.frame = window.bounds
-        let widht: CGFloat = 100
-        let height: CGFloat = 40
-        let loader = Loader(frame: CGRect(x: (view.frame.width - widht) / 2, y: (view.frame.height - height) / 3, width: widht, height: height))
-        view.addSubview(loader)
+        
+        if loader == nil {
+            loader = TRPLoaderView(superView: view)
+        }else {
+            loader?.remove()
+        }
+        
+        loader!.show()
     }
     
 }

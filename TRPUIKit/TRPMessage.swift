@@ -57,12 +57,12 @@ public class TRPMessage {
     public var onPressed: ((_ view: TRPMessage) -> Void)?
     
     public init(contentText:String,
-         type: MessageType,
-         position: Position = .top,
-         autoClose: Bool = true,
-         closeTime: TimeInterval = 2.5,
-         height: CGFloat = 50.0,
-         topForIphoneX: Bool = false) {
+                type: MessageType,
+                position: Position = .top,
+                autoClose: Bool = true,
+                closeTime: TimeInterval = 2.5,
+                height: CGFloat = 50.0,
+                topForIphoneX: Bool = false) {
         self.topForIphoneX = topForIphoneX
         self.contentText = contentText
         self.position = position
@@ -72,7 +72,7 @@ public class TRPMessage {
         self.height = calculateHeight(height)
         commonInit()
     }
-    
+    //
     public init(contentText:String,
                 type: MessageType,
                 nagivationController: UINavigationController?,
@@ -88,20 +88,21 @@ public class TRPMessage {
         self.autoClose = autoClose
         self.autoCloseTime = closeTime
         self.height = calculateHeight(height)
-        self.parentInView = inView
+        self.parentInView = nagivationController?.viewControllers.last?.view
+        
         self.startY = UIApplication.shared.statusBarFrame.size.height + (nagivationController?.navigationBar.frame.height ?? 0.0)
         commonInit()
     }
     
     public init(contentText:String,
-         type: MessageType,
-         position: Position = .top,
-         autoClose: Bool = true,
-         closeTime: TimeInterval = 2,
-         height: CGFloat = 50.0,
-         startY: CGFloat = 0,
-         inView: UIView,
-         topForIphoneX: Bool = false) {
+                type: MessageType,
+                position: Position = .top,
+                autoClose: Bool = true,
+                closeTime: TimeInterval = 2,
+                height: CGFloat = 50.0,
+                startY: CGFloat = 0,
+                inView: UIView,
+                topForIphoneX: Bool = false) {
         self.topForIphoneX = topForIphoneX
         self.contentText = contentText
         self.position = position
@@ -109,6 +110,7 @@ public class TRPMessage {
         self.autoClose = autoClose
         self.autoCloseTime = closeTime
         self.parentInView = inView
+        
         self.height = calculateHeight(height)
         self.startY = startY
         commonInit()
@@ -116,10 +118,12 @@ public class TRPMessage {
     
     private func calculateHeight(_ height: CGFloat) -> CGFloat {
         
-        var isViewAtTop = true
+        /*var isViewAtTop = true
         if let topController = UIApplication.topViewController() {
                  if #available(iOS 11.0, *) {
                      let topConstraint = topController.view.safeAreaInsets.top
+                    print("SIZE TEST \(topConstraint)")
+                    
                      if topConstraint == 88{
                          //check if device is inside navbar on iphone x+ devices.
                          isViewAtTop = false
@@ -132,14 +136,19 @@ public class TRPMessage {
         if isViewAtTop && hasTopNotch{
             return height + 24
         }
+        return height*/
+        if topForIphoneX && hasTopNotch {
+            return height + 24
+        }
         return height
     }
     
      var hasTopNotch: Bool {
         if #available(iOS 11.0, tvOS 11.0, *) {
-            // with notch: 44.0 on iPhone X, XS, XS Max, XR.
-            // without notch: 24.0 on iPad Pro 12.9" 3rd generation, 20.0 on iPhone 8 on iOS 12+.
-            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 24
+           
+            if UIApplication.shared.windows.count == 0 { return false }
+            let top = UIApplication.shared.windows[0].safeAreaInsets.top
+            return top > 20
         }
         return false
     }

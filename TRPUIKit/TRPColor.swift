@@ -9,6 +9,7 @@ import UIKit
 
 public struct TRPColor {
     public static let pink = UIColor(red: 229.0/255.0, green: 78.0/255.0, blue: 83.0/255.0, alpha: 1.0);
+    public static let ultraLightGrey = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 1.0);
     public static let lightGrey = UIColor(red: 200.0/255.0, green: 199.0/255.0, blue: 204.0/255.0, alpha: 1.0);
     public static let darkGrey = UIColor(red: 86.0/255.0, green: 90.0/255.0, blue: 92.0/255.0, alpha: 1.0);
     public static let darkerGrey = UIColor(red: 62.0/255.0, green: 64.0/255.0, blue: 66.0/255.0, alpha: 1.0);
@@ -23,6 +24,6 @@ public struct TRPColor {
     public static var yellow : UIColor = UIColor(red: 254.0/255,  green: 252.0/255, blue: 75.0/255, alpha: 1.0)
     
     public static var lightBlueGrey : UIColor = UIColor(red: 239.0/255,  green: 239.0/255, blue: 244.0/255, alpha: 1.0)
-    public static var Green : UIColor = UIColor(red: 73.0/255,  green: 176.0/255, blue: 87.0/255, alpha: 1.0)
+    public static var green : UIColor = UIColor(red: 73.0/255,  green: 176.0/255, blue: 87.0/255, alpha: 1.0)
     public static var taxiYellow: UIColor = UIColor(red: 251.0/255, green: 192.0/255, blue: 44.0/255, alpha: 1.0)
 }

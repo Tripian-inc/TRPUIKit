@@ -49,7 +49,9 @@ public class TRPStar: UIView {
             layer.addSublayer(star)
             star.transform = CATransform3DMakeScale(size, size, 1.0)
             star.position.x = posX * CGFloat(i)
+            
         }
+        
         frame = CGRect(x: 0, y: 0, width: posX * CGFloat(4) , height: 20)
         isLoaded = true
         layoutIfNeeded()

@@ -24,6 +24,7 @@ public class TRPLoaderView: UIView {
     
     public func show() {
         if isAdded == true {return}
+        
         let widht: CGFloat = 100
         let height: CGFloat = 40
         loaderView = Loader(frame: CGRect(x: (superView.frame.width - widht) / 2,
