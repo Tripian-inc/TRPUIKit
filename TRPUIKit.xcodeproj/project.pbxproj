@@ -47,6 +47,8 @@
 		B243134C215ED602005DB0E6 /* TRPGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B243134B215ED602005DB0E6 /* TRPGradientView.swift */; };
 		B243134E215ED61C005DB0E6 /* TRPTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B243134D215ED61C005DB0E6 /* TRPTopBar.swift */; };
 		B2431350215ED635005DB0E6 /* TRPUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B243134F215ED635005DB0E6 /* TRPUIKit.swift */; };
+		B25C48E92523042400EE32BC /* TRPPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C48E82523042400EE32BC /* TRPPaddingLabel.swift */; };
+		B265D6CB254BA2A300D1A831 /* TRPStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B265D6CA254BA2A300D1A831 /* TRPStarView.swift */; };
 		B2B4436F2161D18200371938 /* TRPCallOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B4436E2161D18200371938 /* TRPCallOutController.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +98,8 @@
 		B243134B215ED602005DB0E6 /* TRPGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPGradientView.swift; sourceTree = "<group>"; };
 		B243134D215ED61C005DB0E6 /* TRPTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPTopBar.swift; sourceTree = "<group>"; };
 		B243134F215ED635005DB0E6 /* TRPUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPUIKit.swift; sourceTree = "<group>"; };
+		B25C48E82523042400EE32BC /* TRPPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPPaddingLabel.swift; sourceTree = "<group>"; };
+		B265D6CA254BA2A300D1A831 /* TRPStarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPStarView.swift; sourceTree = "<group>"; };
 		B2B4436E2161D18200371938 /* TRPCallOutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPCallOutController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +180,7 @@
 				B243134F215ED635005DB0E6 /* TRPUIKit.swift */,
 				B2125FDA21CBDF440001CD53 /* TRPMapTopBar.swift */,
 				B2341D5F231438DB007EAF80 /* UIKitInfo.swift */,
+				B25C48E82523042400EE32BC /* TRPPaddingLabel.swift */,
 			);
 			path = TRPUIKit;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				B243133D215ED55B005DB0E6 /* TRPStar.swift */,
+				B265D6CA254BA2A300D1A831 /* TRPStarView.swift */,
 			);
 			path = Star;
 			sourceTree = "<group>";
@@ -350,7 +356,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\n\n";
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build EXCLUDED_ARCHS=\"arm64\"\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -375,6 +381,7 @@
 				B2431339215ED51C005DB0E6 /* TRPLoaderView.swift in Sources */,
 				B243132D215ED457005DB0E6 /* MovementList.swift in Sources */,
 				B2431332215ED49C005DB0E6 /* TRPCirleMenuDelegate.swift in Sources */,
+				B265D6CB254BA2A300D1A831 /* TRPStarView.swift in Sources */,
 				B2431340215ED575005DB0E6 /* TRPColor.swift in Sources */,
 				B2431334215ED4B0005DB0E6 /* TRPCirleButtonPropety.swift in Sources */,
 				18D08964237ACD1C004947EC /* TRPTimePickerView.swift in Sources */,
@@ -384,6 +391,7 @@
 				18F13AD0237ADC5800EE8598 /* TimeAlert.swift in Sources */,
 				B2431348215ED5CF005DB0E6 /* TRPAddPlaceFilterVC.swift in Sources */,
 				B243133B215ED531005DB0E6 /* Loader.swift in Sources */,
+				B25C48E92523042400EE32BC /* TRPPaddingLabel.swift in Sources */,
 				B243134C215ED602005DB0E6 /* TRPGradientView.swift in Sources */,
 				B2B4436F2161D18200371938 /* TRPCallOutController.swift in Sources */,
 				B243134A215ED5EE005DB0E6 /* TRPMomentumListView.swift in Sources */,
@@ -611,6 +619,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tripian.TRPUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -640,6 +649,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tripian.TRPUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -31,8 +31,12 @@ public class TRPLoaderVC: UIViewController {
         window.bringSubviewToFront(view)
         view.frame = window.bounds
         
+        if loader == nil {
+            loader = TRPLoaderView(superView: view)
+        }else {
+            loader?.remove()
+        }
         
-        loader = TRPLoaderView(superView: view)
         loader!.show()
     }
     

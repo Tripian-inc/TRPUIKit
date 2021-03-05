@@ -10,15 +10,21 @@ import UIKit
 public class TRPSearchAreaButton: UIButton {
     
     private var animator = UIViewPropertyAnimator()
-    public var title:String?
+    public var title:String? {
+        didSet {
+            setTitle(title ?? "", for: UIControl.State.normal)
+        }
+    }
+    
+    
     public var titleColor: UIColor = UIColor.black {
         didSet {
             setTitleColor(titleColor, for: UIControl.State.normal)
         }
     }
-    public var fontSize: CGFloat = 12 {
+    public var fontSize: CGFloat = 13 {
         didSet {
-            titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+            titleLabel?.font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
         }
     }
     public var cornerRadius : CGFloat = 14 {
@@ -33,19 +39,19 @@ public class TRPSearchAreaButton: UIButton {
         }
     }
     
-    public var shadowRadius: CGFloat = 2 {
+    public var shadowRadius: CGFloat = 1 {
         didSet {
             layer.shadowRadius = shadowRadius
         }
     }
     
-    public var shadowOpacity: Float = 0.2 {
+    public var shadowOpacity: Float = 0.7 {
         didSet {
             layer.shadowOpacity = shadowOpacity
         }
     }
     
-    public var shadownOffset: CGSize = CGSize(width: 1, height: 1) {
+    public var shadownOffset: CGSize = CGSize(width: 0, height: 1) {
         didSet {
             layer.shadowOffset = shadownOffset
         }
@@ -66,7 +72,7 @@ public class TRPSearchAreaButton: UIButton {
     }
     
     private func commonInit() {
-        backgroundColor = UIColor.red
+        backgroundColor = UIColor.white
         layer.cornerRadius = cornerRadius
         setTitle(title ?? "", for: UIControl.State.normal)
         setTitleColor(titleColor, for: UIControl.State.normal)
