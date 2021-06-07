@@ -77,10 +77,12 @@ public class TRPSearchAreaButton: UIButton {
         setTitle(title ?? "", for: UIControl.State.normal)
         setTitleColor(titleColor, for: UIControl.State.normal)
         titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
-        layer.shadowColor = shadowColor.cgColor
+        layer.borderColor = UIColor(red: 227/255, green: 228/255, blue: 236/255, alpha: 1).cgColor
+        layer.borderWidth = 1
+        /*layer.shadowColor = shadowColor.cgColor
         layer.shadowRadius = shadowRadius
         layer.shadowOpacity = shadowOpacity
-        layer.shadowOffset = shadownOffset
+        layer.shadowOffset = shadownOffset */
         hidden()
     }
     
