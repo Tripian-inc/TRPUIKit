@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol TopBarDelegate: class {
+protocol TopBarDelegate: AnyObject {
     func topBar(_ topBar:TRPTopBar, buttonPressed: UIButton)
 }
 

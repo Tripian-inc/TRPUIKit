@@ -12,7 +12,7 @@
 import Foundation
 import UIKit
 
-public protocol TimeAlertDelegate: class {
+public protocol TimeAlertDelegate: AnyObject {
     func timeChanged(_ startTime: String,_ endTime: String)
     func dismissTimeAlert()
 }
