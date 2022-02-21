@@ -135,6 +135,34 @@ extension TRPTimePickerView{
         }
     }
     
+    public func setMaxAndMinVal(minVal: String, maxVal: String) {
+        if let minHourValue = getHourValue(for: minVal), let maxHourValue = getHourValue(for: maxVal) {
+            if(hours.count != tmpHours.count){
+                hours = tmpHours
+            }
+            
+            if let minValueIndex = hours.firstIndex(of: minHourValue), minValueIndex < hours.count, minValueIndex > 0 {
+                hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: 0, upper: minValueIndex - 1)))
+            }
+            
+            if let maxValueIndex = hours.firstIndex(of: maxHourValue), maxValueIndex < hours.count - 1 {
+                hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: maxValueIndex + 1, upper: hours.count - 1)))
+            }
+            reloadAllComponents()
+        }
+        
+    }
+    
+    private func getHourValue(for value: String) -> String? {
+        if value.count != 0, value.contains(":"){
+            let newTime = value.components(separatedBy: ":")
+            if newTime.count == 2 {
+                return "\(newTime[0]):00"
+            }
+        }
+        return nil
+    }
+    
     public func setDefaultVal(with defaultVal: Int) {
         guard defaultVal < hours.count else{
             return
@@ -148,6 +176,7 @@ extension TRPTimePickerView{
         guard let index = hours.firstIndex(of: defaultVal) else {
             return
         }
+        selectedHour = defaultHour
         self.selectRow(index, inComponent: 0, animated: false)
     }
     
