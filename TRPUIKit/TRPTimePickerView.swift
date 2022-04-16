@@ -180,7 +180,7 @@ extension TRPTimePickerView{
         self.selectRow(index, inComponent: 0, animated: false)
     }
     
-    public func getdefaultVal() -> String? {
+    public func getDefaultVal() -> String? {
         return defaultHour
     }
     
