@@ -281,9 +281,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2431328215ED3F0005DB0E6 /* Build configuration list for PBXNativeTarget "TRPUIKit" */;
 			buildPhases = (
+				B243131D215ED3F0005DB0E6 /* Headers */,
 				B243131B215ED3F0005DB0E6 /* Sources */,
 				B243131C215ED3F0005DB0E6 /* Frameworks */,
-				B243131D215ED3F0005DB0E6 /* Headers */,
 				B243131E215ED3F0005DB0E6 /* Resources */,
 			);
 			buildRules = (
