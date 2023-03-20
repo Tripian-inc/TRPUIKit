@@ -12,6 +12,7 @@ public class TRPLoaderView: UIView {
     var loaderView: Loader?
     let superView: UIView
     var isAdded = false
+    public var loadingImage: UIImage?
     
     public init(superView: UIView) {
         self.superView = superView
@@ -22,15 +23,18 @@ public class TRPLoaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func show() {
+    public func show(forLong: Bool = false) {
         if isAdded == true {return}
         
-        let widht: CGFloat = 100
-        let height: CGFloat = 40
-        loaderView = Loader(frame: CGRect(x: (superView.frame.width - widht) / 2,
-                                          y: (superView.frame.height - height) / 3,
+        let widht: CGFloat = forLong ? UIScreen.main.bounds.width : 70
+        let height: CGFloat = forLong ? UIScreen.main.bounds.height : 70
+        let x: CGFloat = forLong ? 0 : (superView.frame.width - widht) / 2
+        let y: CGFloat = forLong ? 0 : (superView.frame.height - height) / 2
+        loaderView = Loader(frame: CGRect(x: x,
+                                          y: y,
                                           width: widht,
-                                          height: height))
+                                          height: height), loadingImage: loadingImage, isLong: forLong)
+//        loaderView?.loadingImage = loadingImage
         superView.addSubview(loaderView!)
         isAdded = true
     }
@@ -43,3 +47,4 @@ public class TRPLoaderView: UIView {
         isAdded = false
     }
 }
+

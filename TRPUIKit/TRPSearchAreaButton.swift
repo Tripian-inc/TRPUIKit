@@ -27,7 +27,7 @@ public class TRPSearchAreaButton: UIButton {
             titleLabel?.font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
         }
     }
-    public var cornerRadius : CGFloat = 14 {
+    public var cornerRadius : CGFloat = 10 {
         didSet {
             layer.cornerRadius = cornerRadius
         }

@@ -10,6 +10,7 @@ import UIKit
 public class TRPLoaderVC: UIViewController {
     
     var loader: TRPLoaderView?
+    public var loadingImage: UIImage?
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -33,11 +34,12 @@ public class TRPLoaderVC: UIViewController {
         
         if loader == nil {
             loader = TRPLoaderView(superView: view)
+            loader?.loadingImage = loadingImage
         }else {
             loader?.remove()
         }
         
-        loader!.show()
+        loader!.show(forLong: true)
     }
     
 }
