@@ -7,17 +7,17 @@
 		<key>TRPUIKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>28</integer>
+			<integer>39</integer>
 		</dict>
 		<key>TRPUIKitTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>44</integer>
+			<integer>42</integer>
 		</dict>
 		<key>UniversalTRPUIKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>43</integer>
+			<integer>45</integer>
 		</dict>
 	</dict>
 </dict>

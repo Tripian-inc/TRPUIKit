@@ -8,41 +8,43 @@
 
 import UIKit
 class Loader : UIView{
-    
+
     enum AnimationType: String {
         case opacity = "opacity"
         case scale = "transform.scale"
     }
-    
+
     public var loadingImage: UIImage?
+    public var loadingTexts: [String]?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    
-    init(frame: CGRect, loadingImage: UIImage?, isLong: Bool = false) {
+
+    init(frame: CGRect, loadingImage: UIImage?, isLong: Bool = false, loadingTexts: [String] = []) {
        super.init(frame: frame)
         self.loadingImage = loadingImage
+        self.loadingTexts = loadingTexts
         if isLong {
             commonInitForLong()
         } else {
             commonInit()
         }
    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func commonInit() {
-        
+
         let imageView = UIImageView(image: loadingImage)
         imageView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         self.addSubview(imageView)
         rotate(imageView: imageView)
     }
-    
+
     private func commonInitForLong() {
         let bgView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         bgView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.85)
@@ -60,7 +62,7 @@ class Loader : UIView{
         bgView.addSubview(label)
         self.addSubview(bgView)
     }
-    
+
 //    private func commonInit() {
 //        let layerSize = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
 //        let circleR: CGFloat = 12
@@ -91,7 +93,7 @@ class Loader : UIView{
 //        p2.add(animation(duration: 0.4, delay: 0.15, animation: .scale, toValue: 0.3, fromValue: 1), forKey: "p2Scale")
 //        p3.add(animation(duration: 0.4, delay: 0.30, animation: .scale, toValue: 0.3, fromValue: 1), forKey: "p3Scale")
 //    }
-    
+
     private func createCircleLayer(r: CGFloat, position: CGPoint, color: UIColor? = TRPColor.pink) -> CAShapeLayer {
         let layer: CAShapeLayer = CAShapeLayer()
         let path: UIBezierPath = UIBezierPath()
@@ -102,12 +104,12 @@ class Loader : UIView{
                     endAngle: CGFloat(2 * Double.pi),
                     clockwise: false)
         layer.fillColor = color?.cgColor
-        
+
         layer.path = path.cgPath
         layer.frame = CGRect(x: position.x, y: position.y, width: size.width, height: size.height)
         return layer
     }
-    
+
     private func animation(duration: TimeInterval, delay: TimeInterval? = nil, animation: AnimationType, toValue: Any?, fromValue: Any?) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: animation.rawValue)
         animation.toValue = toValue
@@ -122,9 +124,9 @@ class Loader : UIView{
         animation.timeOffset = 0.3
         return animation
     }
-    
+
     func rotate2(imageView: UIImageView, aCircleTime: Double = 1) { //UIView
-            
+
             UIView.animate(withDuration: aCircleTime/2, delay: 0.0, options: .curveLinear, animations: {
                 imageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
             }, completion: { finished in
@@ -135,9 +137,9 @@ class Loader : UIView{
                 })
             })
     }
-    
+
     func rotate(imageView: UIImageView, aCircleTime: Double = 0.7) { //CABasicAnimation
-        
+
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotationAnimation.fromValue = 0.0
         rotationAnimation.toValue = Double.pi * 2 //Minus can be Direction

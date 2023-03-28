@@ -1,10 +1,10 @@
-//
+
 //  TRPLoaderVC.swift
 //  TRPUIKit
 //
 //  Created by Evren Yaşar on 27.09.2018.
 //  Copyright © 2018 Evren Yaşar. All rights reserved.
-//
+
 
 import UIKit
 public class TRPLoaderVC: UIViewController {
