@@ -97,15 +97,16 @@ extension TRPTimePickerView{
         }
     }
     
-    public func setMaxVal(in maxVal: String) {
-        if maxVal.count != 0, maxVal.contains(":"){
-            let newTime = maxVal.components(separatedBy: ":")
-            if newTime.count == 2 {
-                if let hour = Int(newTime[0]){
-                    setMaxVal(in: hour)
-                }
-            }
+    public func setMaxVal(in maxVal: String, isMinMax: Bool = false) {
+        if(!isMinMax && hours.count != times.count){
+            hours = times
         }
+        guard let maxHourValue = getHourValue(for: maxVal) else {return}
+        
+        if let maxValueIndex = hours.firstIndex(of: maxHourValue), maxValueIndex < hours.count - 1 {
+            hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: maxValueIndex + 1, upper: hours.count - 1)))
+        }
+        reloadAllComponents()
     }
     
     public func setMinVal(in minVal: Int) {
@@ -120,32 +121,35 @@ extension TRPTimePickerView{
         reloadAllComponents()
     }
     
-    public func setMinVal(in minVal: String){
-        if minVal.count != 0, minVal.contains(":"){
-            let newTime = minVal.components(separatedBy: ":")
-            if newTime.count == 2 {
-                if let hour = Int(newTime[0]){
-                    setMinVal(in: hour)
-                }
-            }
+    public func setMinVal(in minVal: String, isMinMax: Bool = false){
+        if(!isMinMax && hours.count != times.count){
+            hours = times
         }
+        guard let minHourValue = getHourValue(for: minVal) else {return}
+        
+        if let minValueIndex = hours.firstIndex(of: minHourValue), minValueIndex < hours.count, minValueIndex > 0 {
+            hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: 0, upper: minValueIndex - 1)))
+        }
+        reloadAllComponents()
     }
     
     public func setMaxAndMinVal(minVal: String, maxVal: String) {
-        if let minHourValue = getHourValue(for: minVal), let maxHourValue = getHourValue(for: maxVal) {
-            if(hours.count != times.count){
-                hours = times
-            }
-            
-            if let minValueIndex = hours.firstIndex(of: minHourValue), minValueIndex < hours.count, minValueIndex > 0 {
-                hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: 0, upper: minValueIndex - 1)))
-            }
-            
-            if let maxValueIndex = hours.firstIndex(of: maxHourValue), maxValueIndex < hours.count - 1 {
-                hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: maxValueIndex + 1, upper: hours.count - 1)))
-            }
-            reloadAllComponents()
+        if(hours.count != times.count){
+            hours = times
         }
+        setMinVal(in: minVal, isMinMax: true)
+        setMaxVal(in: maxVal, isMinMax: true)
+//        if let minHourValue = getHourValue(for: minVal), let maxHourValue = getHourValue(for: maxVal) {
+//            
+//            if let minValueIndex = hours.firstIndex(of: minHourValue), minValueIndex < hours.count, minValueIndex > 0 {
+//                hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: 0, upper: minValueIndex - 1)))
+//            }
+//            
+//            if let maxValueIndex = hours.firstIndex(of: maxHourValue), maxValueIndex < hours.count - 1 {
+//                hours.removeSubrange(ClosedRange(uncheckedBounds: (lower: maxValueIndex + 1, upper: hours.count - 1)))
+//            }
+//            reloadAllComponents()
+//        }
         
     }
     

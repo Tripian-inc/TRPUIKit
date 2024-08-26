@@ -29,7 +29,7 @@ public enum AddRemoveNavButtonStatus{
 }
 public struct CallOutCellMode {
     
-    var id:Int
+    var id:String
     var name: String
     var poiCategory:String
     var startCount: Float
@@ -37,7 +37,7 @@ public struct CallOutCellMode {
     var price: Int
     var rightButtonStatus: AddRemoveNavButtonStatus?
     
-    public init(id: Int,
+    public init(id: String,
                 name: String,
                 poiCategory: String,
                 startCount: Float,
@@ -66,8 +66,8 @@ public class TRPCallOutController {
     var cell: TRPCallOutCell?;
     public var isOpen = false
     public var isAnimating = false
-    public var cellPressed: ((_ id: Int,  _ inRoute: Bool)-> Void)? = nil
-    public var action: ((_ status:AddRemoveNavButtonStatus, _ id:Int) -> Void)? = nil
+    public var cellPressed: ((_ id: String,  _ inRoute: Bool)-> Void)? = nil
+    public var action: ((_ status:AddRemoveNavButtonStatus, _ id: String) -> Void)? = nil
     public var callOutStatus: ((_ status:CallOutStatus) -> Void)? = nil
     private var model: CallOutCellMode?
     private var addBtnImage: UIImage?
@@ -232,8 +232,8 @@ class TRPCallOutCell: UIView {
     public var rightButtonStatus = AddRemoveNavButtonStatus.add
     private let padding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     private var model: CallOutCellMode?
-    public var cellPressed: ((_ id: Int) -> Void)? = nil
-    public var rightButtonAction: ((_ status:AddRemoveNavButtonStatus, _ id:Int) -> Void)? = nil
+    public var cellPressed: ((_ id: String) -> Void)? = nil
+    public var rightButtonAction: ((_ status:AddRemoveNavButtonStatus, _ id: String) -> Void)? = nil
     private var addBtnImage: UIImage?
     private var removeBtnImage: UIImage?
     private var navigationBtnImage: UIImage?
